@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Models\Feature;
+use App\Models\Featurebis;
+use App\Models\Featureimage;
+use App\Models\Homeservice;
+use App\Models\Hometitreservice;
+use App\Models\Newsletter;
 use App\Models\Service;
+use App\Models\Servicecard;
+use App\Models\Titrefeatures;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,7 +23,16 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('pages.services');
+        $services = Homeservice::all();
+        $titreservice = Hometitreservice::all();
+        $contacts = Contact::all();
+        $titrefea = Titrefeatures::all();
+        $features = Feature::all();
+        $featuresimage = Featureimage::all();
+        $featurebis = Featurebis::all();
+        $servicecard = Servicecard::all();
+        $newsletter = Newsletter::all();
+        return view('pages.services', compact('services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter'));
     }
 
     /**

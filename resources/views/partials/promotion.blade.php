@@ -3,8 +3,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <h2>Are you ready to stand out?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est.</p>
+                @foreach ($promotion as $item)
+                    <h2>{{$item->titre}}</h2>
+                    <p>{{$item->description}}</p>
+                @endforeach
             </div>
             <div class="col-md-3">
                 <div class="promo-btn-area">

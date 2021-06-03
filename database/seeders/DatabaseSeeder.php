@@ -14,5 +14,30 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call([
+            PosteSeeder::class,
+            LogoSeeder::class,
+            HomeCarrouselSeeder::class,
+            IconeSeeder::class,
+            HomeCarteSeeder::class,
+            HometitrecontentSeeder::class,
+            HomecontentSeeder::class,
+            HomevideoSeeder::class,
+            HometitretestiSeeder::class,
+            HometestiSeeder::class,
+            HometitreserviceSeeder::class,
+            HomeserviceSeeder::class,
+            HometitreequipeSeeder::class,
+            HomeequipeSeeder::class,
+            PromotionSeeder::class,
+            ContactSeeder::class,
+            FooterSeeder::class,
+            TitrefeaturesSeeder::class,
+            FeatureSeeder::class,
+            FeatureimageSeeder::class,
+            FeaturebisSeeder::class,
+            ServicecardSeeder::class,
+            NewsletterSeeder::class,
+        ]);
     }
 }

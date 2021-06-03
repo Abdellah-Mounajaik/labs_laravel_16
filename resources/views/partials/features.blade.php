@@ -3,78 +3,51 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="section-title">
-            <h2>Get in <span>the Lab</span> and  discover the world</h2>
+            @foreach ($titrefea as $item)
+                <h2>{{$item->titre}}</h2>                
+            @endforeach
         </div>
         <div class="row">
             <!-- feature item -->
             <div class="col-md-4 col-sm-4 features">
+                @foreach ($features as $item)
                 <div class="icon-box light left">
                     <div class="service-text">
-                        <h2>Get in the lab</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+                        <h2>{{$item->titre}}</h2>
+                        <p>{{$item->description}}</p>
                     </div>
                     <div class="icon">
-                        <i class="flaticon-002-caliper"></i>
+                        <i class="{{$item->icone->icone}}"></i>
                     </div>
                 </div>
+                @endforeach
                 <!-- feature item -->
-                <div class="icon-box light left">
-                    <div class="service-text">
-                        <h2>Projects online</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                    <div class="icon">
-                        <i class="flaticon-019-coffee-cup"></i>
-                    </div>
-                </div>
-                <!-- feature item -->
-                <div class="icon-box light left">
-                    <div class="service-text">
-                        <h2>SMART MARKETING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                    <div class="icon">
-                        <i class="flaticon-020-creativity"></i>
-                    </div>
-                </div>
+                
             </div>
             <!-- Devices -->
+            @foreach ($featuresimage as $item)
             <div class="col-md-4 col-sm-4 devices">
                 <div class="text-center">
-                    <img src="img/device.png" alt="">
+                        <img src="{{$item->image}}" alt="">
+                    </div>
                 </div>
-            </div>
+                @endforeach
+                
             <!-- feature item -->
             <div class="col-md-4 col-sm-4 features">
+                @foreach ($featurebis as $item)
+                    
                 <div class="icon-box light">
                     <div class="icon">
-                        <i class="flaticon-037-idea"></i>
+                        <i class="{{$item->icone->icone}}"></i>
                     </div>
                     <div class="service-text">
-                        <h2>Get in the lab</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+                        <h2>{{$item->titre}}}</h2>
+                        <p>{{$item->description}}</p>
                     </div>
                 </div>
-                <!-- feature item -->
-                <div class="icon-box light">
-                    <div class="icon">
-                        <i class="flaticon-025-imagination"></i>
-                    </div>
-                    <div class="service-text">
-                        <h2>Projects online</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                </div>
-                <!-- feature item -->
-                <div class="icon-box light">
-                    <div class="icon">
-                        <i class="flaticon-008-team"></i>
-                    </div>
-                    <div class="service-text">
-                        <h2>SMART MARKETING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
         <div class="text-center mt100">

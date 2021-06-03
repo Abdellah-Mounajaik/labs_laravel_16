@@ -14,10 +14,9 @@
     <nav>
         <ul class="menu-list">
             <li class="{{ Request::routeIs('homes') ? 'active' : '' }}"><a href="/">Home</a></li>
-            <li  class="{{ Request::routeIs('service.index') ? 'active' : '' }}"><a href="{{route('service.index')}}">Services</a></li>
+            <li class="{{ Request::routeIs('service.index') ? 'active' : '' }}"><a href="{{route('service.index')}}">Services</a></li>
             <li class="{{ Request::routeIs('blog.index') ? 'active' : '' }}"><a href="{{route('blog.index')}}">Blog</a></li>
             <li class="{{ Request::routeIs('contact.index') ? 'active' : '' }}"><a href="{{route('contact.index')}}">Contact</a></li>
-        
         </ul>
     </nav>
 </header>
