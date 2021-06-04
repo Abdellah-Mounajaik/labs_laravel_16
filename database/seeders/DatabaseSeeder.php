@@ -38,6 +38,10 @@ class DatabaseSeeder extends Seeder
             FeaturebisSeeder::class,
             ServicecardSeeder::class,
             NewsletterSeeder::class,
+            CategorieSeeder::class,
+            ArticleSeeder::class,
+            TagSeeder::class,
+            ArticletagSeeder::class,
         ]);
     }
 }

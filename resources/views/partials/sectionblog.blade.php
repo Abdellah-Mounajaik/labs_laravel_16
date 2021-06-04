@@ -5,23 +5,28 @@
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 <div class="post-item">
+                    @foreach ($articles as $article)
+                        
                     <div class="post-thumbnail">
-                        <img src="img/blog/blog-2.jpg" alt="">
+                        <img src="{{asset('img/' . $article->image)}}" alt="">
                         <div class="post-date">
                             <h2>03</h2>
                             <h3>Nov 2017</h3>
                         </div>
                     </div>
                     <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
+                        <h2 class="post-title">{{$article->titre}}</h2>
                         <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
+                            <a href="">{{$article->categorie->categorie}}</a>
+                            @foreach ($article->tags as $article)
+                                <a href="">{{$article->tag}}</a>                                
+                            @endforeach
                             <a href="">2 Comments</a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
+                        <p>{{$article->description}}</p>
                         <a href="blog-post.html" class="read-more">Read More</a>
                     </div>
+                    @endforeach
                 </div>
                 <!-- Post item -->
                 <div class="post-item">
@@ -83,27 +88,21 @@
                 <div class="widget-item">
                     <h2 class="widget-title">Categories</h2>
                     <ul>
-                        <li><a href="#">Vestibulum maximus</a></li>
-                        <li><a href="#">Nisi eu lobortis pharetra</a></li>
-                        <li><a href="#">Orci quam accumsan </a></li>
-                        <li><a href="#">Auguen pharetra massa</a></li>
-                        <li><a href="#">Tellus ut nulla</a></li>
-                        <li><a href="#">Etiam egestas viverra </a></li>
+                        @foreach ($categorie as $item)
+                            <li><a href="#">{{$item->categorie}}</a></li>                            
+                        @endforeach
+                        
                     </ul>
                 </div>
                
                 <!-- Single widget -->
                 <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
+                    @foreach ($tag as $item)
                     <ul class="tag">
-                        <li><a href="">branding</a></li>
-                        <li><a href="">identity</a></li>
-                        <li><a href="">video</a></li>
-                        <li><a href="">design</a></li>
-                        <li><a href="">inspiration</a></li>
-                        <li><a href="">web design</a></li>
-                        <li><a href="">photography</a></li>
+                        <li><a href="">{{$item->tag}}</a></li>
                     </ul>
+                    @endforeach
                 </div>
         
             </div>

@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Models\Blog;
-use App\Models\Categorie;
-use App\Models\Newsletter;
-use App\Models\Tag;
+use App\Models\Articletag;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class ArticletagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $categorie = Categorie::all();
-        $tag = Tag::all();
-        $newsletter = Newsletter::all();
-        $articles = Article::all();
-        return view('pages.blog', compact('newsletter', 'categorie', 'tag', 'articles'));
+        //
     }
 
     /**
@@ -49,10 +41,10 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Articletag  $articletag
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Articletag $articletag)
     {
         //
     }
@@ -60,10 +52,10 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Articletag  $articletag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Articletag $articletag)
     {
         //
     }
@@ -72,10 +64,10 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Articletag  $articletag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Articletag $articletag)
     {
         //
     }
@@ -83,10 +75,10 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Articletag  $articletag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Articletag $articletag)
     {
         //
     }

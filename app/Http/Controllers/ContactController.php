@@ -14,7 +14,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('pages.contact');
+        $contacts = Contact::all();
+        @php
+                    $title1 = str_replace('(', '<span>', $title->titleHome4);
+                    $title2 = str_replace(')', '</span>', $title1);
+                    echo $title2;
+                @endphp
+        return view('pages.contact', compact('contacts'));
 
     }
 

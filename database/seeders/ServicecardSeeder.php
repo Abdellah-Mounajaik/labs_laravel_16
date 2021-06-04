@@ -16,17 +16,17 @@ class ServicecardSeeder extends Seeder
     {
         DB::table('servicecards')->insert([
             [
-                "image" => "img/card-1.jpg",
+                "image" => "card-1.jpg",
                 "titre" => "Get in the lab",
                 "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
             ],
             [
-                "image" => "img/card-2.jpg",
+                "image" => "card-2.jpg",
                 "titre" => "Projects online",
                 "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
             ],
             [
-                "image" => "img/card-3.jpg",
+                "image" => "card-3.jpg",
                 "titre" => "SMART MARKETING",
                 "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
             ],
@@ -34,3 +34,5 @@ class ServicecardSeeder extends Seeder
         ]);
     }
 }
+
+
