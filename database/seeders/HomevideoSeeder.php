@@ -15,7 +15,7 @@ class HomevideoSeeder extends Seeder
     public function run()
     {
         DB::table('homevideos')->insert([
-            "image"=> "img/video.jpg",
+            "image"=> "video.jpg",
             "video"=> "https://www.youtube.com/watch?v=JgHfx2v9zOU",
         ]);
     }

@@ -17,37 +17,37 @@ class HometestiSeeder extends Seeder
         DB::table('hometestis')->insert([
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/01.jpg",
+                "image"=> "avatar/01.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/02.jpg",
+                "image"=> "avatar/02.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/01.jpg",
+                "image"=> "avatar/01.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/02.jpg",
+                "image"=> "avatar/02.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/01.jpg",
+                "image"=> "avatar/01.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],
             [
                 "texte"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.",
-                "image"=> "img/avatar/02.jpg",
+                "image"=> "avatar/02.jpg",
                 "nom"=> "Michael Smith",
                 "fonction"=> "CEO Company",
             ],

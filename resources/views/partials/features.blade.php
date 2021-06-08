@@ -4,7 +4,13 @@
     <div class="container">
         <div class="section-title">
             @foreach ($titrefea as $item)
-                <h2>{{$item->titre}}</h2>                
+            <h2>
+                @php
+                    $titre = str_replace('(', '<span>', $item->titre);
+                    $titrebis = str_replace(')', '</span>', $titre);
+                    echo $titrebis;
+                @endphp
+            </h2>
             @endforeach
         </div>
         <div class="row">
@@ -28,7 +34,7 @@
             @foreach ($featuresimage as $item)
             <div class="col-md-4 col-sm-4 devices">
                 <div class="text-center">
-                        <img src="{{$item->image}}" alt="">
+                        <img src="{{asset('img/' . $item->image)}}" alt="">
                     </div>
                 </div>
                 @endforeach
@@ -42,7 +48,7 @@
                         <i class="{{$item->icone->icone}}"></i>
                     </div>
                     <div class="service-text">
-                        <h2>{{$item->titre}}}</h2>
+                        <h2>{{$item->titre}}</h2>
                         <p>{{$item->description}}</p>
                     </div>
                 </div>

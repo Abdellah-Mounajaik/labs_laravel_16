@@ -16,12 +16,12 @@ class HomeCarrouselSeeder extends Seeder
     {
         DB::table('home_carrousels')->insert([
             [
-                "image" => "img/01.jpg",
+                "image" => "01.jpg",
                 "phrase" => "Get your freebie template now!",
                 "created_at" => now(),
             ],
             [
-                "image" => "img/02.jpg",
+                "image" => "02.jpg",
                 "phrase" => "Get your freebie template now!",
                 "created_at" => now(),
             ],

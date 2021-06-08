@@ -15,7 +15,7 @@ class FeatureimageSeeder extends Seeder
     public function run()
     {
         DB::table('featureimages')->insert([
-            "image" => "img/device.png"
+            "image" => "device.png"
         ]);
     }
 }

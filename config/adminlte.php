@@ -260,6 +260,33 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'home',
+            'icon'    => 'far fa-file-alt',
+            'url'  => '/admin/home',
+            'submenu' => [
+                [
+                    'text' => 'Carrousel',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'About card',
+                    'url'  => 'back/home/card',
+                ],
+                [
+                    'text' => 'Content',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'video',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'testimonial',
+                    'url'  => '#',
+                ],
+            ]
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',

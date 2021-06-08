@@ -63,7 +63,6 @@
 
     </div>
 @stop
-
 @section('adminlte_js')
     @stack('js')
     @yield('js')

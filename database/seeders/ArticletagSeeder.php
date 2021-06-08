@@ -26,6 +26,20 @@ class ArticletagSeeder extends Seeder
                 "created_at" => now(),
 
             ],
+            [
+                "article_id" => 2,
+                "tag_id" => 3,
+                "created_at" => now(),
+
+            ],
+            [
+                "article_id" => 3,
+                "tag_id" => 4,
+                "created_at" => now(),
+
+            ],
+
+        
         ]);
     }
 }

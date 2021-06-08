@@ -15,7 +15,7 @@ class HometitreserviceSeeder extends Seeder
     public function run()
     {
         DB::table('hometitreservices')->insert([
-            "titre"=> "Get in the Lab and see the services",
+            "titre"=> "Get in the Lab and see the (services)",
         ]);
     }
 }

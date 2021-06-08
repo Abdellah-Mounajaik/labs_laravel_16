@@ -3,7 +3,13 @@
     <div class="container">
         <div class="section-title dark">
             @foreach ($titreservice as $item)
-                <h2>{{$item->titre}}</h2>
+            <h2>
+                @php
+                    $titre = str_replace('(', '<span>', $item->titre);
+                    $titrebis = str_replace(')', '</span>', $titre);
+                    echo $titrebis;
+                @endphp
+            </h2>
             @endforeach
         </div>
         <div class="row">

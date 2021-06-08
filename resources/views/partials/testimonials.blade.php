@@ -18,11 +18,11 @@
                         <p>{{$item->texte}}</p>
                         <div class="client-info">
                             <div class="avatar">
-                                <img src="{{$item->image}}" alt="">
+                                <img src="{{asset('img/' . $item->image)}}" alt="">
                             </div>
                             <div class="client-name">
                                 <h2>{{$item->nom}}</h2>
-                                <p>{{$item->fonvtion}}</p>
+                                <p>{{$item->fonction}}</p>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HomeCarte;
+use App\Models\Icone;
 use Illuminate\Http\Request;
 
 class HomeCarteController extends Controller
@@ -14,7 +15,8 @@ class HomeCarteController extends Controller
      */
     public function index()
     {
-        //
+        $homecarte = HomeCarte::all();
+        return view('admin/pages/homecarte', compact('homecarte'));
     }
 
     /**
@@ -57,7 +59,8 @@ class HomeCarteController extends Controller
      */
     public function edit(HomeCarte $homeCarte)
     {
-        //
+        $icone = Icone::all();   
+        return view('admin.home.edithomecarte', compact('homeCarte','icone'));
     }
 
     /**

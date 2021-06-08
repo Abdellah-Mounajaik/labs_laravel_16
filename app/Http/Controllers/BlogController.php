@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Blog;
 use App\Models\Categorie;
+use App\Models\Footer;
 use App\Models\Newsletter;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class BlogController extends Controller
         $tag = Tag::all();
         $newsletter = Newsletter::all();
         $articles = Article::all();
-        return view('pages.blog', compact('newsletter', 'categorie', 'tag', 'articles'));
+        $footer = Footer::all();
+        return view('pages.blog', compact('newsletter', 'categorie', 'tag', 'articles', 'footer'));
     }
 
     /**

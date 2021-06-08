@@ -16,17 +16,17 @@ class HomeequipeSeeder extends Seeder
     {
         DB::table('homeequipes')->insert([
             [
-                "image"=> "img/team/1.jpg",
+                "image"=> "team/1.jpg",
                 "nom"=> "Christine Williams",
                 "poste_id" => 2,
             ],
             [
-                "image"=> "img/team/2.jpg",
+                "image"=> "team/2.jpg",
                 "nom"=> "Christine Williams",
                 "poste_id" => 1,
             ],
             [
-                "image"=> "img/team/3.jpg",
+                "image"=> "team/3.jpg",
                 "nom"=> "Christine Williams",
                 "poste_id" => 3,
             ],
