@@ -15,8 +15,8 @@ class HomeCarteController extends Controller
      */
     public function index()
     {
-        $homecarte = HomeCarte::all();
-        return view('admin/pages/homecarte', compact('homecarte'));
+        // $homecartes = HomeCarte::all();
+        // return view('admin/pages/homecarte', compact('homecartes'));
     }
 
     /**
@@ -72,7 +72,11 @@ class HomeCarteController extends Controller
      */
     public function update(Request $request, HomeCarte $homeCarte)
     {
-        //
+        $homeCarte->icone_id = $request->icone_id;
+        $homeCarte->titre = $request->titre;
+        $homeCarte->description = $request->description;
+        $homeCarte->save();
+        return redirect()->route('homeCarte.index', compact('homeCarte'));
     }
 
     /**
@@ -83,6 +87,7 @@ class HomeCarteController extends Controller
      */
     public function destroy(HomeCarte $homeCarte)
     {
-        //
+        $homeCarte->delete();
+        return redirect()->back();
     }
 }

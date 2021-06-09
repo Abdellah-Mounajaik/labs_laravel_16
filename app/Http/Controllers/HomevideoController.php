@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Homevideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomevideoController extends Controller
 {
@@ -57,7 +58,7 @@ class HomevideoController extends Controller
      */
     public function edit(Homevideo $homevideo)
     {
-        //
+        return view('admin.home.editvideo', compact('homevideo'));
     }
 
     /**
@@ -69,7 +70,15 @@ class HomevideoController extends Controller
      */
     public function update(Request $request, Homevideo $homevideo)
     {
-        //
+        if ($request->file('image') != null) {
+            Storage::disk('public')->delete('img/' . $homevideo->img);
+
+            $request->file('image')->storePublicly('img/','public');
+            $homevideo->image =  $request->file('image')->hashName();
+            $homevideo->video =  $request->video;
+            $homevideo->save();
+        }
+        return redirect()->route('video.index');
     }
 
     /**

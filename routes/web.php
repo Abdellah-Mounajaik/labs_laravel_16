@@ -4,7 +4,10 @@ use App\Http\Controllers\AllController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeCarteController;
+use App\Http\Controllers\HomecontentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HometitrecontentController;
+use App\Http\Controllers\HomevideoController;
 use App\Http\Controllers\ServiceController;
 use App\Models\Contact;
 use App\Models\Feature;
@@ -69,19 +72,6 @@ Route::get('/', function () {
 })->name('homes');
 
 
-// Route::get('test/service', function(){
-//         $services = Homeservice::inRandomOrder()->limit(50)->get();
-//         $titreservice = Hometitreservice::all();
-//         $contacts = Contact::all();
-//         $titrefea = Titrefeatures::all();
-//         $features = Feature::inRandomOrder()->limit(50)->get();
-//         $featuresimage = Featureimage::all();
-//         $featurebis = Featurebis::inRandomOrder()->limit(50)->get();
-//         $servicecard = Servicecard::all();
-//         $newsletter = Newsletter::all();
-//         $footer = Footer::all();
-//         return view('pages.services', compact('services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
-// });
 
 
 
@@ -109,8 +99,45 @@ Route::get('/admin/home', [HomeController::class, 'index']);
 //     return view('admin.home');
 // });
 
-Route::resource('back/home/card', HomeCarteController::class);
+// Route::resource('back/home/card', HomeCarteController::class);
+
+Route::get('home/carte', function(){
+    $homecartes = HomeCarte::all();
+    return view('admin/pages/homecarte', compact('homecartes'));
+});
 
 
+Route::get('home/content', function(){
+    $hometitrecontent = Hometitrecontent::all();
+    $homecontent = Homecontent::all();
+    return view('admin/pages/content', compact('hometitrecontent', 'homecontent'));
+})->name('content.index');
 
-// Route::get('back/home/card', [HomeCarte::class, "index"]);
+Route::get('home/video', function(){
+    $homevideo = Homevideo::all();
+    return view('admin/pages/video', compact('homevideo'));
+})->name('video.index');
+
+Route::get('home/testimonial', function(){
+    $hometitretesti = Hometitretesti::all();
+    $hometesti = Hometesti::all();
+    return view('admin/pages/testimonial', compact('hometitretesti', 'hometesti'));
+})->name('testimonial.index');
+
+
+Route::resource('homeCarte', HomeCarteController::class);
+
+// Route::resource('hometitrecontent', HometitrecontentController::class);
+
+Route::get('hometitrecontent/{hometitrecontent}/',[HometitrecontentController::class, "edit"])->name('hometitrecontent.edit');
+
+Route::put('hometitrecontent/{hometitrecontent}/',[HometitrecontentController::class, 'update'])->name('hometitrecontent.update');
+
+// Route::resource('home/content', HomecontentController::class);
+
+
+Route::get('home/content/{homecontent}/',[HomecontentController::class, "edit"])->name('homecontent.edit');
+Route::put('home/content/{homecontent}/',[HomecontentController::class, "update"])->name('homecontent.update');
+
+Route::get('home/video/{homevideo}/', [HomevideoController::class, "edit"])->name('homevideo.edit');
+Route::put('home/video/{homevideo}/', [HomevideoController::class, "update"])->name('homevideo.update');

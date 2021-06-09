@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Homecontent;
 use App\Models\Hometitrecontent;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class HometitrecontentController extends Controller
      */
     public function index()
     {
-        //
+        // $hometitrecontents = Hometitrecontent::all();
+        // $homecontent = Homecontent::all();
+        // return view('admin/pages/content', compact('hometitrecontents', 'homecontent'));
     }
 
     /**
@@ -57,7 +60,7 @@ class HometitrecontentController extends Controller
      */
     public function edit(Hometitrecontent $hometitrecontent)
     {
-        //
+        return view('admin.home.edittitrecontent', compact('hometitrecontent'));
     }
 
     /**
@@ -69,7 +72,11 @@ class HometitrecontentController extends Controller
      */
     public function update(Request $request, Hometitrecontent $hometitrecontent)
     {
-        //
+        $hometitrecontent->titre = $request->titre;
+        $hometitrecontent->save();
+
+        return redirect()->route('content.index', compact('hometitrecontent'));
+        // return view('home/content', compact('hometitrecontent'));
     }
 
     /**

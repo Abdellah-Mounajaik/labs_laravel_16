@@ -270,19 +270,19 @@ return [
                 ],
                 [
                     'text' => 'About card',
-                    'url'  => 'back/home/card',
+                    'url'  => 'home/carte',
                 ],
                 [
                     'text' => 'Content',
-                    'url'  => '#',
+                    'url'  => 'home/content',
                 ],
                 [
                     'text' => 'video',
-                    'url'  => '#',
+                    'url'  => 'home/video',
                 ],
                 [
                     'text' => 'testimonial',
-                    'url'  => '#',
+                    'url'  => 'home/testimonial',
                 ],
             ]
         ],

@@ -57,7 +57,7 @@ class HomecontentController extends Controller
      */
     public function edit(Homecontent $homecontent)
     {
-        //
+        return view('admin.home.editcontent', compact('homecontent'));
     }
 
     /**
@@ -69,7 +69,10 @@ class HomecontentController extends Controller
      */
     public function update(Request $request, Homecontent $homecontent)
     {
-        //
+        $homecontent->texte = $request->texte;
+        $homecontent->save();
+        // return view('home/content', compact('homecontent'));
+        return redirect()->route('content.index', compact('homecontent'));
     }
 
     /**
