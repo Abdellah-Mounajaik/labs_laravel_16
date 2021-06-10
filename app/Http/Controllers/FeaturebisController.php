@@ -59,7 +59,7 @@ class FeaturebisController extends Controller
     public function edit(Featurebis $featurebis)
     {
         $icone = Icone::all();
-        return view('admin.service.edittel', compact('featurebis', 'icone'));
+        return view('admin.service.edittelbis', compact('featurebis', 'icone'));
     }
 
     /**

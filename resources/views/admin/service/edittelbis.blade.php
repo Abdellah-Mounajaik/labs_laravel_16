@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('content')
     <h1 class="text-center">Modifier le service</h1>
-    <form method="POST" class="text-center py-5 container" action="{{route('featurebis.update', $feature->id)}}">
+    <form method="POST" class="text-center py-5 container" action="{{route('featurebis.update', $featurebis->id)}}">
         @csrf
         @method('PUT')
         <label for="icone">Icone</label><br>
