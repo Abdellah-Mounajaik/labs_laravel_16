@@ -84,7 +84,6 @@ Route::get('/', function () {
 
 
 
-Auth::routes();
 
 Route::get('/con', function () {
     return view('connexion/pageconnexion');
@@ -96,9 +95,11 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 // BLADE FRONT
-Route::resource('service', ServiceController::class);
+// Route::resource('service', ServiceController::class);
 Route::resource('blog', BlogController::class);
 Route::resource('contact', ContactController::class);
+
+Route::get('service/index',[ServiceController::class, 'index'])->name('service.index'); 
 
 Route::get('/admin/home', [HomeController::class, 'index']);
 
@@ -139,7 +140,7 @@ Route::get('home/testimonial', function(){
     return view('admin/pages/testimonial', compact('hometitretesti', 'hometesti'));
 })->name('testimonial.index');
 
-Route::get('home/service', function(){
+Route::get('service', function(){
     $hometitreservice = Hometitreservice::all();
     $homeservices = Homeservice::all();
     return view('admin/pages/service', compact('hometitreservice', 'homeservices'));
@@ -157,7 +158,13 @@ Route::get('home/ready', function(){
 })->name('promotion.index');
 
 
-
+Route::get('service/tel', function(){
+        $titrefea = Titrefeatures::all();
+        $features = Feature::all();
+        $featuresimage = Featureimage::all();
+        $featurebis = Featurebis::all();
+    return view('admin/pages/tel', compact('features', 'titrefea', 'featuresimage', 'featurebis'));
+});
 
 
 Route::resource('homeCarte', HomeCarteController::class);
@@ -209,3 +216,7 @@ Route::put('home/equipe/{homeequipe}', [HomeequipeController::class, 'update'])-
 
 Route::get('home/redy/{promotion}',[PromotionController::class, 'edit'])->name('promotion.edit');
 Route::put('home/redy/{promotion}',[PromotionController::class, 'update'])->name('promotion.update');
+
+
+
+Auth::routes();

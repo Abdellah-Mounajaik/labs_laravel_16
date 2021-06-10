@@ -11,4 +11,5 @@ class Homeservice extends Model
     public function icone(){
         return $this->belongsTo(Icone::class);
     }
+    protected $table = 'homeservices';
 }

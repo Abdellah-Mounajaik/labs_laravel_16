@@ -286,7 +286,7 @@ return [
                 ],
                 [
                     'text' => 'service',
-                    'url'  => 'home/service',
+                    'url'  => 'service',
                 ],
                 [
                     'text' => 'equipe',
@@ -302,8 +302,14 @@ return [
             'text'=> 'Service',
             'icon'=> 'fas fa-cogs',
             'submenu'=> [
-                'text'=> 'service',
-                'url'=> 'service/service',
+                [
+                    'text'=> 'service',
+                    'url'=> 'service',
+                ],
+                [
+                    'text'=> 'tel',
+                    'url'=> 'service/tel',
+                ],
             ],
         ],
         [
