@@ -57,7 +57,7 @@ class HometitreserviceController extends Controller
      */
     public function edit(Hometitreservice $hometitreservice)
     {
-        //
+        return view('admin.home.edittitreservice', compact('hometitreservice'));
     }
 
     /**
@@ -69,7 +69,9 @@ class HometitreserviceController extends Controller
      */
     public function update(Request $request, Hometitreservice $hometitreservice)
     {
-        //
+        $hometitreservice->titre = $request->titre;
+        $hometitreservice->save();
+        return redirect()->route('homeservice.index');
     }
 
     /**

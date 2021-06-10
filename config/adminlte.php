@@ -266,10 +266,10 @@ return [
             'submenu' => [
                 [
                     'text' => 'Carrousel',
-                    'url'  => '#',
+                    'url'  => 'home/carrousel',
                 ],
                 [
-                    'text' => 'About card',
+                    'text' => 'Carte',
                     'url'  => 'home/carte',
                 ],
                 [
@@ -284,7 +284,27 @@ return [
                     'text' => 'testimonial',
                     'url'  => 'home/testimonial',
                 ],
+                [
+                    'text' => 'service',
+                    'url'  => 'home/service',
+                ],
+                [
+                    'text' => 'equipe',
+                    'url'  => 'home/equipe',
+                ],
+                [
+                    'text' => 'ready',
+                    'url'  => 'home/ready',
+                ],
             ]
+        ],
+        [
+            'text'=> 'Service',
+            'icon'=> 'fas fa-cogs',
+            'submenu'=> [
+                'text'=> 'service',
+                'url'=> 'service/service',
+            ],
         ],
         [
             'text' => 'change_password',

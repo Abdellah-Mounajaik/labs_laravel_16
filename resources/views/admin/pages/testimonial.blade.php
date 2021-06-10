@@ -1,40 +1,33 @@
 @extends('adminlte::page')
 @section('content')
-    <h1 class="text-center">Testimonial</h1>
 
-    <div class="testimonial-section pb100">
         <div class="test-overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-4">
-                    <div class="section-title left">
+                    <div class="text-center">
+                        <h1>Titre testimonial :</h1>
                         @foreach ($hometitretesti as $item)
-                            <h2>{{$item->titre}}</h2>                        
+                            <h2>{{$item->titre}}</h2>
+                            <button class="btn btn-success"><a class="text-white" href="{{route('titretesti.edit', $item->id)}}">Modiffier</a></button>                        
                         @endforeach
                     </div>
                     <div class="owl-carousel" id="testimonial-slide">
                         <!-- single testimonial -->
-                        @foreach ($hometesti as $item)
-                        <div class="testimonial">
-                            <span>‘​‌‘​‌</span>
-                                
-                            <p>{{$item->texte}}</p>
-                            <div class="client-info">
-                                <div class="avatar">
+                        
+                        <div class="text-center container my-4">
+                            <div class="row">
+                                @foreach ($hometesti as $item)
+                                    
+                                <div class="col-4 card">
                                     <img src="{{asset('img/' . $item->image)}}" alt="">
+                                    <h4>Nom : {{$item->nom}}</h2>
+                                    <h5>Fonction : {{$item->fonction}}</h4>
+                                    <p>{{$item->texte}}</p>
+                                    <button class="btn btn-success"><a class="text-white" href="{{route('testi.edit', $item->id)}}">Modiffier</a></button>
                                 </div>
-                                <div class="client-name">
-                                    <h2>{{$item->nom}}</h2>
-                                    <p>{{$item->fonction}}</p>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        @endforeach
+                        
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Testimonial section end-->
-    
+
 @endsection

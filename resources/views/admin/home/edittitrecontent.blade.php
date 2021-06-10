@@ -7,6 +7,7 @@
         @method('PUT')
         <label class="my-4" for="titre">Titre</label>
         <input value="{{$hometitrecontent->titre}}" name="titre" class="form-control" type="text">
+        <p style="font-weight: bold">Mettre le mot surligner entre parenthèse !</p>
         <button class="my-3 btn btn-success">Modiffier</button>
     </form>
 @endsection

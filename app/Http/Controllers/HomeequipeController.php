@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homeequipe;
+use App\Models\Poste;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeequipeController extends Controller
 {
@@ -57,7 +59,8 @@ class HomeequipeController extends Controller
      */
     public function edit(Homeequipe $homeequipe)
     {
-        //
+        $poste = Poste::all();
+        return view('admin.home.editequipe', compact('poste', 'homeequipe'));
     }
 
     /**
@@ -69,7 +72,15 @@ class HomeequipeController extends Controller
      */
     public function update(Request $request, Homeequipe $homeequipe)
     {
-        //
+        if ($request->file('image') != null) {
+            Storage::disk('public')->delete('img/team/' . $homeequipe->image);
+            $request->file('image')->storePublicly('img/team/','public');
+            $homeequipe->image =  $request->file('image')->hashName();
+            $homeequipe->nom =  $request->nom;
+            $homeequipe->poste_id =  $request->poste_id;
+            $homeequipe->save();
+        }
+        return redirect()->route('equipe.index');
     }
 
     /**

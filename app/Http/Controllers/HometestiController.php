@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hometesti;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HometestiController extends Controller
 {
@@ -57,7 +58,7 @@ class HometestiController extends Controller
      */
     public function edit(Hometesti $hometesti)
     {
-        //
+        return view('admin.home.edittesti', compact('hometesti'));
     }
 
     /**
@@ -69,7 +70,17 @@ class HometestiController extends Controller
      */
     public function update(Request $request, Hometesti $hometesti)
     {
-        //
+        if ($request->file('image') != null) {
+            Storage::disk('public')->delete('img/' . $hometesti->image);
+
+            $request->file('image')->storePublicly('img/','public');
+            $hometesti->image =  $request->file('image')->hashName();
+            $hometesti->nom =  $request->nom;
+            $hometesti->fonction =  $request->fonction;
+            $hometesti->texte =  $request->texte;
+            $hometesti->save();
+        }
+        return redirect()->route('testimonial.index');
     }
 
     /**

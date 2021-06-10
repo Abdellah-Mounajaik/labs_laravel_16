@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homeservice;
+use App\Models\Icone;
 use Illuminate\Http\Request;
 
 class HomeserviceController extends Controller
@@ -57,7 +58,8 @@ class HomeserviceController extends Controller
      */
     public function edit(Homeservice $homeservice)
     {
-        //
+        $icone = Icone::all();
+        return view('admin.home.editservice', compact('icone', 'homeservice'));
     }
 
     /**
@@ -69,7 +71,12 @@ class HomeserviceController extends Controller
      */
     public function update(Request $request, Homeservice $homeservice)
     {
-        //
+        $homeservice->icone_id = $request->icone_id;
+        $homeservice->titre = $request->titre;
+        $homeservice->description = $request->description;
+        $homeservice->save();
+
+        return redirect()->route('homeservice.index', compact('homeservice'));
     }
 
     /**
@@ -80,6 +87,7 @@ class HomeserviceController extends Controller
      */
     public function destroy(Homeservice $homeservice)
     {
-        //
+        $homeservice->delete();
+        return redirect()->back();
     }
 }

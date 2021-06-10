@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LogoController extends Controller
 {
@@ -56,7 +57,7 @@ class LogoController extends Controller
      */
     public function edit(Logo $logo)
     {
-        //
+        return view('admin.home.editlogo', compact('logo'));
     }
 
     /**
@@ -68,7 +69,14 @@ class LogoController extends Controller
      */
     public function update(Request $request, Logo $logo)
     {
-        //
+        if ($request->file('logo') != null) {
+            Storage::disk('public')->delete('/' . $logo->logo);
+            $request->file('logo')->storePublicly('/','public');
+            $logo->logo =  $request->file('logo')->hashName();
+            
+            $logo->save();
+        }
+        return redirect()->route('carrousel.index', compact('logo'));
     }
 
     /**

@@ -57,7 +57,7 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        //
+        return view('admin.home.editready', compact('promotion'));
     }
 
     /**
@@ -69,8 +69,12 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
-        //
+        $promotion->titre = $request->titre;
+        $promotion->description = $request->description;
+        $promotion->save();
+        return redirect()->route('promotion.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

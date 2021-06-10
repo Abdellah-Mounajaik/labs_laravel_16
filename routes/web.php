@@ -3,11 +3,20 @@
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeCarrouselController;
 use App\Http\Controllers\HomeCarteController;
 use App\Http\Controllers\HomecontentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeequipeController;
+use App\Http\Controllers\HomeserviceController;
+use App\Http\Controllers\HometestiController;
 use App\Http\Controllers\HometitrecontentController;
+use App\Http\Controllers\HometitreequipeController;
+use App\Http\Controllers\HometitreserviceController;
+use App\Http\Controllers\HometitretestiController;
 use App\Http\Controllers\HomevideoController;
+use App\Http\Controllers\LogoController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServiceController;
 use App\Models\Contact;
 use App\Models\Feature;
@@ -60,15 +69,15 @@ Route::get('/', function () {
     
 
     $homeequipe = Homeequipe::all();
-    $homeequipe = Homeequipe::where('poste_id', '>', 1)->get();
-    $homeequipec = $homeequipe->random(2);
+    // $homeequipe = Homeequipe::where('poste_id', '>', 1)->get();
+    // $homeequipec = $homeequipe->random(2);
 
-    $ceo = Homeequipe::where('poste_id', 1);
+    // $ceo = Homeequipe::where('poste_id', 1);
 
     $promotion = Promotion::all();
     $contacts = Contact::all();
     $footer = Footer::all();
-    return view('welcome', compact('logos','titreequipe', 'carrousels', 'homecarte', 'hometitrecontent', 'homecontent', 'homevideo', 'hometitretesti', 'hometesti', 'hometitreservice', 'homeservices', 'homeequipe', 'promotion', 'contacts', 'homeequipec', 'ceo', 'footer'));
+    return view('welcome', compact('logos','titreequipe', 'carrousels', 'homecarte', 'hometitrecontent', 'homecontent', 'homevideo', 'hometitretesti', 'hometesti', 'hometitreservice', 'homeservices', 'homeequipe', 'promotion', 'contacts', 'footer'));
 })->name('homes');
 
 
@@ -101,6 +110,12 @@ Route::get('/admin/home', [HomeController::class, 'index']);
 
 // Route::resource('back/home/card', HomeCarteController::class);
 
+Route::get('home/carrousel', function(){
+    $carrousels = HomeCarrousel::all();
+    $logos = Logo::all();
+    return view('admin.pages.carrousel', compact('carrousels', 'logos'));
+})->name('carrousel.index');
+
 Route::get('home/carte', function(){
     $homecartes = HomeCarte::all();
     return view('admin/pages/homecarte', compact('homecartes'));
@@ -124,6 +139,26 @@ Route::get('home/testimonial', function(){
     return view('admin/pages/testimonial', compact('hometitretesti', 'hometesti'));
 })->name('testimonial.index');
 
+Route::get('home/service', function(){
+    $hometitreservice = Hometitreservice::all();
+    $homeservices = Homeservice::all();
+    return view('admin/pages/service', compact('hometitreservice', 'homeservices'));
+})->name('homeservice.index');
+
+Route::get('home/equipe', function(){
+    $titreequipe = Hometitreequipe::all();
+    $homeequipe = Homeequipe::all();
+    return view('admin/pages/equipe', compact('titreequipe', 'homeequipe'));
+})->name('equipe.index');
+
+Route::get('home/ready', function(){
+    $promotion = Promotion::all();
+    return view('admin/pages/ready',compact("promotion"));
+})->name('promotion.index');
+
+
+
+
 
 Route::resource('homeCarte', HomeCarteController::class);
 
@@ -141,3 +176,36 @@ Route::put('home/content/{homecontent}/',[HomecontentController::class, "update"
 
 Route::get('home/video/{homevideo}/', [HomevideoController::class, "edit"])->name('homevideo.edit');
 Route::put('home/video/{homevideo}/', [HomevideoController::class, "update"])->name('homevideo.update');
+
+Route::get('home/titretesti/{hometitretesti}',[HometitretestiController::class, 'edit'])->name('titretesti.edit');
+Route::put('home/titretesti/{hometitretesti}',[HometitretestiController::class, 'update'])->name('titretesti.update');
+
+Route::get('home/testi/{hometesti}',[HometestiController::class, "edit"])->name('testi.edit');
+Route::put('home/testi/{hometesti}',[HometestiController::class, "update"])->name('testi.update');
+
+// Route::get('home/carrousel/{homeCarrousel}',[HomeCarrouselController::class, 'edit'])->name('homeCarrousel.edit');
+// Route::put('home/carrousel/{homeCarrousel}',[HomeCarrouselController::class, 'update'])->name('carrousel.update');
+
+Route::resource('homeCarrousel', HomeCarrouselController::class);
+
+Route::get('home/logo/{logo}', [LogoController::class, "edit"])->name('logo.edit');
+Route::put('home/logo/{logo}', [LogoController::class, "update"])->name('logo.update');
+
+Route::get('home/service/{homeservice}', [HomeserviceController::class, "edit"])->name('homeservice.edit');
+Route::put('home/service/{homeservice}', [HomeserviceController::class, "update"])->name('homeservice.update');
+Route::delete('home/service/{homeservice}', [HomeserviceController::class, 'destroy'])->name('homeservice.destroy');
+
+Route::get('home/titreservice/{hometitreservice}', [HometitreserviceController::class, "edit"])->name('titreservice.edit');
+Route::put('home/titreservice/{hometitreservice}', [HometitreserviceController::class, "update"])->name('titreservice.update');
+
+
+Route::get('home/titreequipe/{hometitreequipe}',[HometitreequipeController::class, "edit"])->name('titreequipe.edit');
+Route::put('home/titreequipe/{hometitreequipe}',[HometitreequipeController::class, "update"])->name('titreequipe.update');
+
+
+
+Route::get('home/equipe/{homeequipe}', [HomeequipeController::class, 'edit'])->name('homeequipe.edit');
+Route::put('home/equipe/{homeequipe}', [HomeequipeController::class, 'update'])->name('homeequipe.update');
+
+Route::get('home/redy/{promotion}',[PromotionController::class, 'edit'])->name('promotion.edit');
+Route::put('home/redy/{promotion}',[PromotionController::class, 'update'])->name('promotion.update');

@@ -57,7 +57,7 @@ class HometitreequipeController extends Controller
      */
     public function edit(Hometitreequipe $hometitreequipe)
     {
-        //
+        return view('admin.home.edittitreequipe', compact('hometitreequipe'));
     }
 
     /**
@@ -69,7 +69,9 @@ class HometitreequipeController extends Controller
      */
     public function update(Request $request, Hometitreequipe $hometitreequipe)
     {
-        //
+        $hometitreequipe->titre = $request->titre;
+        $hometitreequipe->save();
+        return redirect()->route('equipe.index');
     }
 
     /**

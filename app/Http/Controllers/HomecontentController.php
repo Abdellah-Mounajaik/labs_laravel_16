@@ -71,7 +71,6 @@ class HomecontentController extends Controller
     {
         $homecontent->texte = $request->texte;
         $homecontent->save();
-        // return view('home/content', compact('homecontent'));
         return redirect()->route('content.index', compact('homecontent'));
     }
 

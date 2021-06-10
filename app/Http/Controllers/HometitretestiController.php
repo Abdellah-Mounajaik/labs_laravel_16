@@ -57,7 +57,7 @@ class HometitretestiController extends Controller
      */
     public function edit(Hometitretesti $hometitretesti)
     {
-        //
+        return view('admin.home.edittitretesti', compact('hometitretesti'));
     }
 
     /**
@@ -69,7 +69,9 @@ class HometitretestiController extends Controller
      */
     public function update(Request $request, Hometitretesti $hometitretesti)
     {
-        //
+        $hometitretesti->titre = $request->titre;
+        $hometitretesti->save();
+        return redirect()->route('testimonial.index', compact('hometitretesti'));
     }
 
     /**
