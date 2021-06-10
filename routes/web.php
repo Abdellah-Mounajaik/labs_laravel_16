@@ -3,6 +3,8 @@
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FeaturebisController;
+use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\HomeCarrouselController;
 use App\Http\Controllers\HomeCarteController;
 use App\Http\Controllers\HomecontentController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\HomevideoController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TitrefeaturesController;
 use App\Models\Contact;
 use App\Models\Feature;
 use App\Models\Featurebis;
@@ -164,7 +167,7 @@ Route::get('service/tel', function(){
         $featuresimage = Featureimage::all();
         $featurebis = Featurebis::all();
     return view('admin/pages/tel', compact('features', 'titrefea', 'featuresimage', 'featurebis'));
-});
+})->name('tel.index');
 
 
 Route::resource('homeCarte', HomeCarteController::class);
@@ -216,6 +219,17 @@ Route::put('home/equipe/{homeequipe}', [HomeequipeController::class, 'update'])-
 
 Route::get('home/redy/{promotion}',[PromotionController::class, 'edit'])->name('promotion.edit');
 Route::put('home/redy/{promotion}',[PromotionController::class, 'update'])->name('promotion.update');
+
+Route::get('service/teltitre/{titrefeatures}', [TitrefeaturesController::class, "edit"])->name('titrefeature.edit');
+Route::put('service/teltitre/{titrefeatures}', [TitrefeaturesController::class, "update"])->name('titrefeature.update');
+
+Route::get('service/tel/{feature}', [FeatureController::class, "edit"])->name('feature.edit');
+Route::put('service/tel/{feature}', [FeatureController::class, "update"])->name('feature.update');
+
+Route::get('service/telbis/{featurebis}', [FeaturebisController::class, "edit"])->name('featurebis.edit');
+Route::put('service/telbis/{featurebis}', [FeaturebisController::class, "update"])->name('featurebis.update');
+
+
 
 
 

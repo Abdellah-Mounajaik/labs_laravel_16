@@ -57,7 +57,7 @@ class TitrefeaturesController extends Controller
      */
     public function edit(Titrefeatures $titrefeatures)
     {
-        //
+        return view('admin.service.edittitretel', compact('titrefeatures'));
     }
 
     /**
@@ -69,7 +69,9 @@ class TitrefeaturesController extends Controller
      */
     public function update(Request $request, Titrefeatures $titrefeatures)
     {
-        //
+        $titrefeatures->titre = $request->titre;
+        $titrefeatures->save();
+        return redirect()->route('tel.index');
     }
 
     /**

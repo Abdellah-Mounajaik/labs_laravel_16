@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feature;
+use App\Models\Icone;
 use Illuminate\Http\Request;
 
 class FeatureController extends Controller
@@ -57,7 +58,8 @@ class FeatureController extends Controller
      */
     public function edit(Feature $feature)
     {
-        //
+        $icone = Icone::all();
+        return view('admin.service.edittel', compact('feature', 'icone'));
     }
 
     /**
@@ -69,7 +71,11 @@ class FeatureController extends Controller
      */
     public function update(Request $request, Feature $feature)
     {
-        //
+        $feature->icone_id = $request->icone_id;
+        $feature->titre = $request->titre;
+        $feature->description = $request->description;
+        $feature->save();
+        return redirect()->route('tel.index', compact('feature'));
     }
 
     /**

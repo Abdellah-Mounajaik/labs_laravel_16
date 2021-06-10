@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Featurebis;
+use App\Models\Icone;
 use Illuminate\Http\Request;
 
 class FeaturebisController extends Controller
@@ -14,7 +15,7 @@ class FeaturebisController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -57,7 +58,8 @@ class FeaturebisController extends Controller
      */
     public function edit(Featurebis $featurebis)
     {
-        //
+        $icone = Icone::all();
+        return view('admin.service.edittel', compact('featurebis', 'icone'));
     }
 
     /**
@@ -69,7 +71,11 @@ class FeaturebisController extends Controller
      */
     public function update(Request $request, Featurebis $featurebis)
     {
-        //
+        $featurebis->icone_id = $request->icone_id;
+        $featurebis->titre = $request->titre;
+        $featurebis->description = $request->description;
+        $featurebis->save();
+        return redirect()->route('tel.index', compact('featurebis'));
     }
 
     /**
