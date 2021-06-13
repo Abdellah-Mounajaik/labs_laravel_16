@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Servicecard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServicecardController extends Controller
 {
@@ -57,7 +58,7 @@ class ServicecardController extends Controller
      */
     public function edit(Servicecard $servicecard)
     {
-        //
+        return view('admin.service.editservicecarte', compact('servicecard'));
     }
 
     /**
@@ -69,8 +70,21 @@ class ServicecardController extends Controller
      */
     public function update(Request $request, Servicecard $servicecard)
     {
-        //
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
+        if ($request->file('image') != null) {
+            Storage::disk('public')->delete('img/' . $servicecard->image);
+            $request->file('image')->storePublicly('img/','public');
+            $servicecard->image =  $request->file('image')->hashName();
+            $servicecard->titre =  $request->titre;
+            $servicecard->description =  $request->description;
+            $servicecard->save();
+        }
+        return redirect()->route('servicecard.index')->with('success', "La modification a bien été éxécuté");
     }
+
 
     /**
      * Remove the specified resource from storage.

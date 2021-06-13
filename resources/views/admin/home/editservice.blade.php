@@ -11,9 +11,19 @@
             @endforeach
         </select><br><br>
         <label for="titre">Titre :</label><br><br>
-        <input class="form-control" value="{{$homeservice->titre}}" name="titre" type="text"><br>
+        <input class="@error('titre') is-invalid @enderror form-control" value="{{$homeservice->titre}}" name="titre" type="text"><br>
+        @error('titre')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <label for="descripion">Description :</label><br>
-        <input class="form-control" value="{{$homeservice->description}}" name="description" type="text"><br>
+        <input class="@error('description') is-invalid @enderror form-control" value="{{$homeservice->description}}" name="description" type="text"><br>
+        @error('description')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <button class="btn btn-success">Modifier</button><br>
     </form>
 @endsection

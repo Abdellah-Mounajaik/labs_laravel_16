@@ -78,7 +78,7 @@ class HomeCarrouselController extends Controller
             
             $homeCarrousel->save();
         }
-        return redirect()->route('carrousel.index');
+        return redirect()->route('carrousel.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

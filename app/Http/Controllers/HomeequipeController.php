@@ -72,6 +72,9 @@ class HomeequipeController extends Controller
      */
     public function update(Request $request, Homeequipe $homeequipe)
     {
+        request()->validate([
+            "nom"=> ["required", "min:3"],
+        ]);
         if ($request->file('image') != null) {
             Storage::disk('public')->delete('img/team/' . $homeequipe->image);
             $request->file('image')->storePublicly('img/team/','public');
@@ -80,7 +83,7 @@ class HomeequipeController extends Controller
             $homeequipe->poste_id =  $request->poste_id;
             $homeequipe->save();
         }
-        return redirect()->route('equipe.index');
+        return redirect()->route('equipe.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

@@ -4,7 +4,7 @@
         @foreach ($carrousels as $carrousel)
         <div class="hero-center">
             @foreach ($logos as $logo)
-                <img src="{{  $logo->logo}}" alt="">
+                <img src="{{asset('img/' . $logo->logo)}}" alt="">
             @endforeach
                 <p>{{$carrousel->phrase}}</p>
                 

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+@extends('layouts.flash')
     <h1 class="text-center my-4">Carrousel</h1>
 
     <div class="container">

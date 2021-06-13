@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 @section('content')
+@extends('layouts.flash')
+
 <!-- features section -->
 <div class="text-center">
     @foreach ($titrefea as $item)

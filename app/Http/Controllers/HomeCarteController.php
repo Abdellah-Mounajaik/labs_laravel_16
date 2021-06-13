@@ -72,11 +72,15 @@ class HomeCarteController extends Controller
      */
     public function update(Request $request, HomeCarte $homeCarte)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         $homeCarte->icone_id = $request->icone_id;
         $homeCarte->titre = $request->titre;
         $homeCarte->description = $request->description;
         $homeCarte->save();
-        return redirect()->route('homeCarte.index', compact('homeCarte'));
+        return redirect()->route('homeCarte.index', compact('homeCarte'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**

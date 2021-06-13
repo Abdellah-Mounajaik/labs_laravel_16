@@ -5,7 +5,12 @@
         @csrf
         @method('PUT')
         <label for="texte">texte :</label>
-        <input name="texte" type="text" value="{{$homecontent->texte}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <input name="texte" type="text" value="{{$homecontent->texte}}" class="@error('texte') is-invalid @enderror form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        @error('texte')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <button class="btn btn-success my-3">Modiffier</button>
     </form>
 @endsection

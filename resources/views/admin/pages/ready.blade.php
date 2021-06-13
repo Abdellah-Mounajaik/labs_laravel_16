@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 @section('content')
+@extends('layouts.flash')
+
 <h1 class="text-center my-3">Are you ready ?</h1>
 <div class="promotion-section">
     <div class="container">

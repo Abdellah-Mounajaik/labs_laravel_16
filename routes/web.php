@@ -19,6 +19,7 @@ use App\Http\Controllers\HometitretestiController;
 use App\Http\Controllers\HomevideoController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\ServicecardController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TitrefeaturesController;
 use App\Models\Contact;
@@ -43,6 +44,7 @@ use App\Models\Promotion;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
 use Database\Seeders\HometitretestiSeeder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,7 +61,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $logos = Logo::all();
     $carrousels = HomeCarrousel::all();
-    $homecarte = HomeCarte::all();
+    $homecarte = HomeCarte::inRandomOrder()->limit(3)->get();
     $hometitrecontent = Hometitrecontent::all();
     $homecontent = Homecontent::all();
     $homevideo = Homevideo::all();
@@ -170,6 +172,12 @@ Route::get('service/tel', function(){
 })->name('tel.index');
 
 
+Route::get('service/carte', function(){
+    $servicecard = Servicecard::all();
+    return view("admin/pages/servicecarte", compact('servicecard'));
+})->name('servicecard.index');
+
+
 Route::resource('homeCarte', HomeCarteController::class);
 
 // Route::resource('hometitrecontent', HometitrecontentController::class);
@@ -229,8 +237,8 @@ Route::put('service/tel/{feature}', [FeatureController::class, "update"])->name(
 Route::get('service/telbis/{featurebis}', [FeaturebisController::class, "edit"])->name('featurebis.edit');
 Route::put('service/telbis/{featurebis}', [FeaturebisController::class, "update"])->name('featurebis.update');
 
-
-
+Route::get('service/carte/{servicecard}', [ServicecardController::class, "edit"])->name('servicecard.edit');
+Route::put('service/carte/{servicecard}', [ServicecardController::class, "update"])->name('servicecard.update');
 
 
 Auth::routes();

@@ -71,12 +71,16 @@ class HomeserviceController extends Controller
      */
     public function update(Request $request, Homeservice $homeservice)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         $homeservice->icone_id = $request->icone_id;
         $homeservice->titre = $request->titre;
         $homeservice->description = $request->description;
         $homeservice->save();
 
-        return redirect()->route('homeservice.index', compact('homeservice'));
+        return redirect()->route('homeservice.index', compact('homeservice'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**

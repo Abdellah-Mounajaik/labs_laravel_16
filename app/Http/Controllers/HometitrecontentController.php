@@ -72,10 +72,13 @@ class HometitrecontentController extends Controller
      */
     public function update(Request $request, Hometitrecontent $hometitrecontent)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+        ]);
         $hometitrecontent->titre = $request->titre;
         $hometitrecontent->save();
 
-        return redirect()->route('content.index', compact('hometitrecontent'));
+        return redirect()->route('content.index', compact('hometitrecontent'))->with('success', "La modification a bien été éxécuté");
         // return view('home/content', compact('hometitrecontent'));
     }
 

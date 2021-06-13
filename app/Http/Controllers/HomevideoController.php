@@ -78,7 +78,7 @@ class HomevideoController extends Controller
             $homevideo->video =  $request->video;
             $homevideo->save();
         }
-        return redirect()->route('video.index');
+        return redirect()->route('video.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

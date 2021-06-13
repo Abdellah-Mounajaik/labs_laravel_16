@@ -1,5 +1,5 @@
 <!-- Services section -->
-<div class="services-section spad">
+<div id="services" class="services-section spad">
     <div class="container">
         <div class="section-title dark">
             @foreach ($titreservice as $item)
@@ -30,9 +30,9 @@
             @endforeach
             
         </div>
-        <div class="text-center">
-            <a href="" class="site-btn">Browse</a>
+        <div class="d-flex justify-content-center">
+            {{ $services->links() }}
         </div>
-    </div>
+    </div>  
 </div>
 <!-- services section end -->

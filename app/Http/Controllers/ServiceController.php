@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Homeservice::inRandomOrder()->limit(50)->get();
+        $services = Homeservice::paginate(8)->fragment('services');
         $titreservice = Hometitreservice::all();
         $contacts = Contact::all();
         $titrefea = Titrefeatures::all();

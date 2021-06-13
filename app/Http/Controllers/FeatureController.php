@@ -71,11 +71,15 @@ class FeatureController extends Controller
      */
     public function update(Request $request, Feature $feature)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         $feature->icone_id = $request->icone_id;
         $feature->titre = $request->titre;
         $feature->description = $request->description;
         $feature->save();
-        return redirect()->route('tel.index', compact('feature'));
+        return redirect()->route('tel.index', compact('feature'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**

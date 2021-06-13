@@ -7,7 +7,12 @@
         <label for="image">Image</label><br>
         <input type="file" name="image" id="image"><br>
         <label for="nom">Nom</label><br>
-        <input value="{{$homeequipe->nom}}" class="form-control" type="text" name="nom" id=""><br>
+        <input value="{{$homeequipe->nom}}" class="@error('nom') is-invalid @enderror form-control" type="text" name="nom" id=""><br>
+        @error('nom')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <label for="poste_id">Poste</label>
         <select name="poste_id" id="poste_id">
             @foreach ($poste as $item)

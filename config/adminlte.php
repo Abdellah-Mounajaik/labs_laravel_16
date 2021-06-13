@@ -310,6 +310,10 @@ return [
                     'text'=> 'tel',
                     'url'=> 'service/tel',
                 ],
+                [
+                    'text'=> 'cartes',
+                    'url'=> 'service/carte',
+                ],
             ],
         ],
         [

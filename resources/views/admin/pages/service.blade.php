@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+@extends('layouts.flash')
 <div class="text-center my-4">
     <h1 class="text-center">Titre service : </h1>
     @foreach ($hometitreservice as $item)

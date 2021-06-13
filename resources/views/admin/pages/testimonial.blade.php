@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('content')
-
+@extends('layouts.flash')
         <div class="test-overlay"></div>
                     <div class="text-center">
                         <h1>Titre testimonial :</h1>

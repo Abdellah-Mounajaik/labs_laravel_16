@@ -69,9 +69,12 @@ class HometitreequipeController extends Controller
      */
     public function update(Request $request, Hometitreequipe $hometitreequipe)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+        ]);
         $hometitreequipe->titre = $request->titre;
         $hometitreequipe->save();
-        return redirect()->route('equipe.index');
+        return redirect()->route('equipe.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

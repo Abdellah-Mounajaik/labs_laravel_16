@@ -70,6 +70,11 @@ class HometestiController extends Controller
      */
     public function update(Request $request, Hometesti $hometesti)
     {
+        request()->validate([
+            "nom"=> ["required", "min:3"],
+            "fonction"=> ["required", "min:3"],
+            "texte"=> ["required", "min:5"],
+        ]);
         if ($request->file('image') != null) {
             Storage::disk('public')->delete('img/' . $hometesti->image);
 
@@ -80,7 +85,7 @@ class HometestiController extends Controller
             $hometesti->texte =  $request->texte;
             $hometesti->save();
         }
-        return redirect()->route('testimonial.index');
+        return redirect()->route('testimonial.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

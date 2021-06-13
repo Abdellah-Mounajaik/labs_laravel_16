@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('content')
-    
+@extends('layouts.flash')
 
 <div class="text-center intro-video">
     <h1>Vidéo : </h1>

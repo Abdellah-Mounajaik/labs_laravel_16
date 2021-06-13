@@ -69,10 +69,14 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         $promotion->titre = $request->titre;
         $promotion->description = $request->description;
         $promotion->save();
-        return redirect()->route('promotion.index');
+        return redirect()->route('promotion.index')->with('success', "La modification a bien été éxécuté");
     }
 
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('content')
-    
+@extends('layouts.flash')
 <!-- About section -->
 <h1 class="text-center my-3">Carte : </h1>
 <div class="about-section">

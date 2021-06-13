@@ -14,9 +14,20 @@
 
         
         <label for="titre">Titre</label><br>
-        <input value="{{$homeCarte->titre}}" name="titre" class="form-control" type="text"><br>
+        <input value="{{$homeCarte->titre}}"  class="@error('titre') is-invalid @enderror form-control" name="titre" type="text"><br>
+        @error('titre')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <label for="description">Description</label><br>
-        <input value="{{$homeCarte->description}}" name="description" class="form-control" type="text">
+        <input value="{{$homeCarte->description}}" class="@error('description') is-invalid @enderror form-control" name="description"  type="text">
+        @error('description')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
+        <br>
         <button class="btn btn-success mt-3">Modffier</button>
     </form>
 @endsection

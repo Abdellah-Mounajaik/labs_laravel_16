@@ -69,6 +69,9 @@ class HomecontentController extends Controller
      */
     public function update(Request $request, Homecontent $homecontent)
     {
+        request()->validate([
+            "texte"=> ["required", "min:5"],
+        ]);
         $homecontent->texte = $request->texte;
         $homecontent->save();
         return redirect()->route('content.index', compact('homecontent'));

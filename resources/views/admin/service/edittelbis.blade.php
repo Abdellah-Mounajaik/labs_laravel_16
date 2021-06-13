@@ -12,9 +12,20 @@
         </select><br>
         
         <label for="titre">Titre</label><br>
-        <input value="{{$featurebis->titre}}" name="titre" class="form-control" type="text"><br>
+        <input value="{{$featurebis->titre}}" name="titre" class="@error('titre') is-invalid @enderror form-control" type="text">
+        @error('titre')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
+        <br>
         <label for="description">Description</label><br>
-        <input value="{{$featurebis->description}}" name="description" class="form-control" type="text">
+        <input value="{{$featurebis->description}}" name="description" class="@error('description') is-invalid @enderror form-control" type="text">
+        @error('description')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <button class="btn btn-success mt-3">Modffier</button>
     </form>
 @endsection

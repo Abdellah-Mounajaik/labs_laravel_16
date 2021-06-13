@@ -71,11 +71,15 @@ class FeaturebisController extends Controller
      */
     public function update(Request $request, Featurebis $featurebis)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         $featurebis->icone_id = $request->icone_id;
         $featurebis->titre = $request->titre;
         $featurebis->description = $request->description;
         $featurebis->save();
-        return redirect()->route('tel.index', compact('featurebis'));
+        return redirect()->route('tel.index', compact('featurebis'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**

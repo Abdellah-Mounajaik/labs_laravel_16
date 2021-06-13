@@ -33,6 +33,12 @@ class HomeCarteSeeder extends Seeder
                 "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
                 "created_at" => now(),
             ],
+            [
+                "icone_id" => 4,
+                "titre" => "TEST RANDOM",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
+                "created_at" => now(),
+            ],
         ]);
     }
 }

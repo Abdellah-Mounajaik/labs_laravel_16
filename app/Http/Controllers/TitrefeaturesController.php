@@ -69,9 +69,12 @@ class TitrefeaturesController extends Controller
      */
     public function update(Request $request, Titrefeatures $titrefeatures)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+        ]);
         $titrefeatures->titre = $request->titre;
         $titrefeatures->save();
-        return redirect()->route('tel.index');
+        return redirect()->route('tel.index')->with('success', "La modification a bien été éxécuté");
     }
 
     /**

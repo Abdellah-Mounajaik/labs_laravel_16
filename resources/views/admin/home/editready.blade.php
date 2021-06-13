@@ -5,9 +5,19 @@
         @csrf
         @method('PUT')
         <label for="titre">Titre</label>
-        <input class="form-control" type="text" value="{{$promotion->titre}}" name="titre" id="titre"><br>
+        <input class="@error('titre') is-invalid @enderror form-control" type="text" value="{{$promotion->titre}}" name="titre" id="titre"><br>
+        @error('titre')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <label for="description">Description</label><br>
-        <input type="text" class="form-control" value="{{$promotion->description}}" name="description" id="description"><br> <br>
+        <input type="text" class="@error('description') is-invalid @enderror form-control" value="{{$promotion->description}}" name="description" id="description"><br> <br>
+        @error('description')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <button class="btn btn-success">Modifier</button>
     </form>
 @endsection
