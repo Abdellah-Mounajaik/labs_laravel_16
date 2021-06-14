@@ -10,6 +10,7 @@ use App\Models\Footer;
 use App\Models\Homeservice;
 use App\Models\Hometitreservice;
 use App\Models\Newsletter;
+use App\Models\Objet;
 use App\Models\Service;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
@@ -34,7 +35,8 @@ class ServiceController extends Controller
         $servicecard = Servicecard::all();
         $newsletter = Newsletter::all();
         $footer = Footer::all();
-        return view('pages.services', compact('services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
+        $objets = Objet::all();
+        return view('pages.services', compact('objets', 'services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
     }
     
 

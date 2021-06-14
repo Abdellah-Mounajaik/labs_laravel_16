@@ -30,6 +30,18 @@ class HomeequipeSeeder extends Seeder
                 "nom"=> "Christine Williams",
                 "poste_id" => 3,
             ],
+            [
+                "image"=> "team/3.jpg",
+                "nom"=> "Christine Williams test dev web",
+                "poste_id" => 2,
+            ],
+            [
+                "image"=> "team/3.jpg",
+                "nom"=> "Christine Williams test designer",
+                "poste_id" => 3,
+            ],
+
+            
         ]);
     }
 }

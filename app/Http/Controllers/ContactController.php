@@ -61,7 +61,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('admin.contact.editcontact', compact('contact'));
     }
 
     /**
@@ -73,7 +73,23 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+            "soustitre"=> ["required", "min:3"],
+            "adresse"=> ["required", "min:3"],
+            "telephone"=> ["numeric"],
+            "email"=> ["required", "min:3"],
+        ]);
+        $contact->titre = $request->titre;
+        $contact->description = $request->description;
+        $contact->soustitre = $request->soustitre;
+        $contact->adresse = $request->adresse;
+        $contact->telephone = $request->telephone;
+        $contact->email = $request->email;
+        $contact->save();
+        return redirect()->route('admincontact.index')->with('success', "La modification a bien été éxécuté");
+
     }
 
     /**

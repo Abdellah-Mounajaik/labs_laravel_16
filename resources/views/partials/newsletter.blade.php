@@ -9,8 +9,9 @@
             </div>
             <div class="col-md-9">
                 <!-- newsletter form -->
-                <form class="nl-form">
-                    <input type="text" placeholder="Your e-mail here">
+                <form method="POST" action="{{route('newsletter')}}" class="nl-form">
+                    @csrf
+                    <input name="mail" type="text" placeholder="Your e-mail here">
                     <button class="site-btn btn-2">Newsletter</button>
                 </form>
             </div>

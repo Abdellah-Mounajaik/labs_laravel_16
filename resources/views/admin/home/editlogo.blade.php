@@ -5,7 +5,7 @@
         @csrf
         @method('PUT')
         <label for="logo">Choisir le logo</label>
-        <input type="file" name="logo" id=""><br>
+        <input type="file" name="logo" id="logo"><br>
         <button class="btn btn-success">Modiffier</button>
     </form>
 @endsection

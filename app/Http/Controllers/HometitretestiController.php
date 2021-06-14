@@ -69,9 +69,12 @@ class HometitretestiController extends Controller
      */
     public function update(Request $request, Hometitretesti $hometitretesti)
     {
+        request()->validate([
+            "titre"=> ["required", "min:3"],
+        ]);
         $hometitretesti->titre = $request->titre;
         $hometitretesti->save();
-        return redirect()->route('testimonial.index', compact('hometitretesti'));
+        return redirect()->route('testimonial.index', compact('hometitretesti'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**

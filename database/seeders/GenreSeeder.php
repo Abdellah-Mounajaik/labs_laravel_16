@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PosteSeeder extends Seeder
+class GenreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,9 @@ class PosteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('postes')->insert([
-            ["poste" => "CEO"],
-            ["poste" => "Developpeur web"],
-            ["poste" => "Designer"],
-    
+        DB::table('genres')->insert([
+            ["genre"=> "Homme"],
+            ["genre"=> "Femme"],
         ]);
     }
 }

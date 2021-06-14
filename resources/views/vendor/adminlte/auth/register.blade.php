@@ -19,8 +19,8 @@
 
         {{-- Name field --}}
         <div class="input-group mb-3">
-            <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+            <input type="text" name="nom" class="form-control {{ $errors->has('nom') ? 'is-invalid' : '' }}"
+                   value="{{ old('nom') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -33,6 +33,60 @@
             @endif
         </div>
 
+        <div class="input-group mb-3">
+            <input type="text" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"
+                   value="{{ old('description') }}" placeholder="{{ __('description') }}" autofocus>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('description'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('description') }}</strong>
+                </div>
+            @endif
+        </div>
+        <?php use App\Models\Genre; $genres= Genre::all() ?>
+        <div class="input-group mb-3">
+            <select name="genre_id" id="" class="form-control {{ $errors->has('genre_id') ? 'is-invalid' : '' }}" value="{{ old('function_id') }}">
+                <option value="">Genre</option>
+                @foreach ($genres as $genre)
+                    <option value="{{$genre->id}}">{{$genre->genre}}</option>
+                @endforeach
+            </select>
+            @if($errors->has('genre_id'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('genre_id') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <?php use App\Models\Poste; $postes= Poste::all() ?>
+        <div class="input-group mb-3">
+            <select name="poste_id" id="" class="form-control {{ $errors->has('poste_id') ? 'is-invalid' : '' }}" value="{{ old('function_id') }}">
+                <option value="">Poste</option>
+                @foreach ($postes as $poste)
+                    <option value="{{$poste->id}}">{{$poste->poste}}</option>
+                @endforeach
+            </select>
+            @if($errors->has('poste_id'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('poste_id') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="file" name="image" id="" class="{{ $errors->has('image') ? 'is-invalid' : '' }}">
+            @if($errors->has('image'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('image') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Footer;
+use App\Mail\ContactSender;
+use App\Models\Objet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
-class FooterController extends Controller
+class ObjetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +37,17 @@ class FooterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mail::to('mounajaikabdellah@gmail.com')->send(new ContactSender($request));
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Footer  $footer
+     * @param  \App\Models\Objet  $objet
      * @return \Illuminate\Http\Response
      */
-    public function show(Footer $footer)
+    public function show(Objet $objet)
     {
         //
     }
@@ -52,42 +55,33 @@ class FooterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Footer  $footer
+     * @param  \App\Models\Objet  $objet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Footer $footer)
+    public function edit(Objet $objet)
     {
-        return view('admin.footer.editfooter', compact('footer'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Footer  $footer
+     * @param  \App\Models\Objet  $objet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Footer $footer)
+    public function update(Request $request, Objet $objet)
     {
-        request()->validate([
-            "phrase"=> ["required", "min:3"],
-            "lien"=> ["required", "min:5"],
-            "motlien"=> ["required", "min:3"],
-        ]);
-        $footer->phrase = $request->phrase;
-        $footer->lien = $request->lien;
-        $footer->motlien = $request->motlien;
-        $footer->save();
-        return redirect()->route('adminfooter.index')->with('success', "La modification a bien été éxécuté");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Footer  $footer
+     * @param  \App\Models\Objet  $objet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Footer $footer)
+    public function destroy(Objet $objet)
     {
         //
     }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewsletterSender;
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
@@ -35,7 +37,8 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mail::to("mounajaikabdellah@gmail.com")->send(new NewsletterSender($request));
+        return redirect()->back();
     }
 
     /**

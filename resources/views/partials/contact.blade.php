@@ -18,17 +18,22 @@
             </div>
             <!-- contact form -->
             <div class="col-md-6 col-pull">
-                <form class="form-class" id="con_form">
+                <form class="form-class" action="{{route('contactobjet')}}" method="POST" id="con_form">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" name="name" placeholder="Your name">
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" name="email" placeholder="Your email">
+                            <input type="text" id="mail" name="mail" placeholder="Your email">
                         </div>
                         <div class="col-sm-12">
-                            <input type="text" name="subject" placeholder="Subject">
-                            <textarea name="message" placeholder="Message"></textarea>
+                            <select style="padding: 10px" style="margin: 10px" name="objets" id="">
+                                @foreach ($objets as $objet)
+                                    <option value="{{$objet->objet}}">{{$objet->objet}}</option>
+                                @endforeach
+                            </select>
+                            <textarea class="mt-5" name="message" placeholder="Message"></textarea>
                             <button class="site-btn">send</button>
                         </div>
                     </div>

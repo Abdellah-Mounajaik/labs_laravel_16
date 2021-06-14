@@ -15,18 +15,27 @@
             @endforeach
         </div>
         <div class="row">
-            <!-- single member -->
-            @foreach ($homeequipe as $item)
-                
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="{{asset('img/' . $item->image)}}" alt="">
-                    <h2>{{$item->nom}}</h2>
-                    <h3>{{$item->poste->poste}}</h3>
+                    <img src="img/{{$membre[0]->image}}" alt="">
+                    <h2>{{$membre[0]->nom}}</h2>
+                    <h3>{{$membre[0]->poste->poste}}</h3>
                 </div>
             </div>
-            @endforeach
-            
+            <div class="col-sm-4">
+                <div class="member">
+                    <img src="img/{{$ceo[0]->image}}" alt="">
+                    <h2>{{$ceo[0]->nom}}</h2>
+                    <h3>{{$ceo[0]->poste->poste}}</h3>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="member">
+                    <img src="img/{{$membre[1]->image}}" alt="">
+                    <h2>{{$membre[1]->nom}}</h2>
+                    <h3>{{$membre[1]->poste->poste}}</h3>
+                </div>
+            </div>            
         </div>
     </div>
 </div>

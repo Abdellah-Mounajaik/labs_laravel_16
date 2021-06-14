@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             PosteSeeder::class,
+            RoleSeeder::class,
+            GenreSeeder::class,
+            UserSeeder::class,
             LogoSeeder::class,
             HomeCarrouselSeeder::class,
             IconeSeeder::class,
@@ -42,6 +45,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             TagSeeder::class,
             ArticletagSeeder::class,
+            ObjetSeeder::class,
         ]);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeaturebisController;
 use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeCarrouselController;
 use App\Http\Controllers\HomeCarteController;
 use App\Http\Controllers\HomecontentController;
@@ -18,6 +19,8 @@ use App\Http\Controllers\HometitreserviceController;
 use App\Http\Controllers\HometitretestiController;
 use App\Http\Controllers\HomevideoController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ObjetController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServicecardController;
 use App\Http\Controllers\ServiceController;
@@ -40,6 +43,7 @@ use App\Models\Hometitretesti;
 use App\Models\Homevideo;
 use App\Models\Logo;
 use App\Models\Newsletter;
+use App\Models\Objet;
 use App\Models\Promotion;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
@@ -72,8 +76,11 @@ Route::get('/', function () {
     // $hometitreequipe = Hometitreequipe::all();
     $titreequipe = Hometitreequipe::all();
     
+    $ceo = Homeequipe::where('poste_id', 1)->get();
+    $team = Homeequipe::where('poste_id', '>', 1)->get();
+    $membre = $team->random(2);
 
-    $homeequipe = Homeequipe::all();
+    // $homeequipe = Homeequipe::all();
     // $homeequipe = Homeequipe::where('poste_id', '>', 1)->get();
     // $homeequipec = $homeequipe->random(2);
 
@@ -82,7 +89,8 @@ Route::get('/', function () {
     $promotion = Promotion::all();
     $contacts = Contact::all();
     $footer = Footer::all();
-    return view('welcome', compact('logos','titreequipe', 'carrousels', 'homecarte', 'hometitrecontent', 'homecontent', 'homevideo', 'hometitretesti', 'hometesti', 'hometitreservice', 'homeservices', 'homeequipe', 'promotion', 'contacts', 'footer'));
+    $objets = Objet::all();
+    return view('welcome', compact( 'objets', 'ceo', 'team', 'membre', 'logos','titreequipe', 'carrousels', 'homecarte', 'hometitrecontent', 'homecontent', 'homevideo', 'hometitretesti', 'hometesti', 'hometitreservice', 'homeservices', 'promotion', 'contacts', 'footer'));
 })->name('homes');
 
 
@@ -177,6 +185,19 @@ Route::get('service/carte', function(){
     return view("admin/pages/servicecarte", compact('servicecard'));
 })->name('servicecard.index');
 
+Route::get('admin/contact', function(){
+    $contacts = Contact::all();
+    return view('admin/pages/contact', compact('contacts'));
+})->name('admincontact.index');
+
+Route::get('admin/footer', function(){
+    $footer = Footer::all();
+    return view('admin/pages/footer', compact('footer'));
+})->name('adminfooter.index');
+
+Route::get('admin/profil', function(){
+    return view('admin/pages/profil');
+});
 
 Route::resource('homeCarte', HomeCarteController::class);
 
@@ -239,6 +260,16 @@ Route::put('service/telbis/{featurebis}', [FeaturebisController::class, "update"
 
 Route::get('service/carte/{servicecard}', [ServicecardController::class, "edit"])->name('servicecard.edit');
 Route::put('service/carte/{servicecard}', [ServicecardController::class, "update"])->name('servicecard.update');
+
+Route::get('admin/contact/edit/{contact}', [ContactController::class, "edit"])->name('admincontact.edit');
+Route::put('admin/contact/{contact}', [ContactController::class, "update"])->name('admincontact.update');
+
+Route::get('admin/footer/{footer}',[FooterController::class, "edit"])->name('adminfooter.edit');
+Route::put('admin/footer/{footer}',[FooterController::class, "update"])->name('adminfooter.update');
+
+
+Route::post('homes/objetcontact', [ObjetController::class, "store"])->name('contactobjet');
+Route::post('homes/newsletter', [NewsletterController::class, "store"])->name('newsletter');
 
 
 Auth::routes();

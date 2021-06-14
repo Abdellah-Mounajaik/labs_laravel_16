@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PosteSeeder extends Seeder
+class ObjetSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,11 @@ class PosteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('postes')->insert([
-            ["poste" => "CEO"],
-            ["poste" => "Developpeur web"],
-            ["poste" => "Designer"],
-    
+        DB::table('objets')->insert([
+            ["objet"=> "Demande de devis"],
+            ["objet"=> "Demande de stage"],
+            ["objet"=> "Demande de renseignement"],
+
         ]);
     }
 }
