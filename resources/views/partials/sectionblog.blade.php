@@ -1,5 +1,5 @@
 <!-- page section -->
-<div class="page-section spad">
+<div id="articlepag" class="page-section spad">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
@@ -25,19 +25,18 @@
                                 </a>                                
                             <a href="">2 Comments</a>
                         </div>
-                        <p>{{$article->description}}</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
+                        <p>{{ Str::limit($article->description, 200, '...') }}</p>
+                        
+                        <a href="{{route('Blogpost.index')}}" class="read-more">Read More</a>
                     </div>
                     @endforeach
+                    <div class="d-flex justify-content-center">
+                        {{ $articles->links() }}
+                    </div>
                 </div>
                 
         
-                <!-- Pagination -->
-                <div class="page-pagination">
-                    <a class="active" href="">01.</a>
-                    <a href="">02.</a>
-                    <a href="">03.</a>
-                </div>
+        
             </div>
             <!-- Sidebar area -->
             <div class="col-md-4 col-sm-5 sidebar">

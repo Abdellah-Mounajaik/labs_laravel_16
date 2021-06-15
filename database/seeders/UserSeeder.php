@@ -19,11 +19,31 @@ class UserSeeder extends Seeder
             [
                 "nom" => "Admin",
                 "description" => "je suis une description",
-                "image" => "goku.jpg",
+                "image" => "img/goku.jpg",
                 "poste_id" => 1,
                 "genre_id" => 1,
                 "role_id" => 1,
                 "email" => "admin@gmail.com",
+                "password" =>  Hash::make('testtest'),
+            ],
+            [
+                "nom" => "Webmaster",
+                "description" => "je suis une description",
+                "image" => "img/goku.jpg",
+                "poste_id" => 2,
+                "genre_id" => 1,
+                "role_id" => 2,
+                "email" => "webmaster@gmail.com",
+                "password" =>  Hash::make('testtest'),
+            ],
+            [
+                "nom" => "Redacteur",
+                "description" => "je suis une description",
+                "image" => "img/goku.jpg",
+                "poste_id" => 2,
+                "genre_id" => 1,
+                "role_id" => 3,
+                "email" => "redacteur@gmail.com",
                 "password" =>  Hash::make('testtest'),
             ]
         ]);

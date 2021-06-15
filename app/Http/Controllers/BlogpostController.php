@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Models\Blog;
-use App\Models\Categorie;
+use App\Models\Blogpost;
 use App\Models\Footer;
-use App\Models\Newsletter;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class BlogpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $categorie = Categorie::all();
-        $tag = Tag::all();
-        $newsletter = Newsletter::all();
-        $articles = Article::paginate(3)->fragment('articlepag');
         $footer = Footer::all();
-        return view('pages.blog', compact('newsletter', 'categorie', 'tag', 'articles', 'footer'));
+        return view('partials.blogpost', compact('footer'));
     }
 
     /**
@@ -51,10 +43,10 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Blogpost $blogpost)
     {
         //
     }
@@ -62,10 +54,10 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Blogpost $blogpost)
     {
         //
     }
@@ -74,10 +66,10 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Blogpost $blogpost)
     {
         //
     }
@@ -85,10 +77,10 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Blogpost $blogpost)
     {
         //
     }

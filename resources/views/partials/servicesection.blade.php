@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <!-- single service -->
-            @foreach ($services as $item)
+            @foreach ($services->reverse() as $item)
                 
             <div class="col-md-4 col-sm-6">
                 <div class="service">

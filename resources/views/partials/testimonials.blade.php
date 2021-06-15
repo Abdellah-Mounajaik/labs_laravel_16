@@ -11,7 +11,7 @@
                 </div>
                 <div class="owl-carousel" id="testimonial-slide">
                     <!-- single testimonial -->
-                    @foreach ($hometesti as $item)
+                    @foreach ($hometesti->reverse() as $item)
                     <div class="testimonial">
                         <span>‘​‌‘​‌</span>
                             

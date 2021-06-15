@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AllController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogpostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeaturebisController;
 use App\Http\Controllers\FeatureController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServicecardController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TitrefeaturesController;
+use App\Http\Controllers\UserController;
 use App\Models\Contact;
 use App\Models\Feature;
 use App\Models\Featurebis;
@@ -47,6 +49,7 @@ use App\Models\Objet;
 use App\Models\Promotion;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
+use App\Models\User;
 use Database\Seeders\HometitretestiSeeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -110,6 +113,8 @@ Route::get('/home', function() {
 // BLADE FRONT
 // Route::resource('service', ServiceController::class);
 Route::resource('blog', BlogController::class);
+Route::resource('Blogpost', BlogpostController::class);
+
 Route::resource('contact', ContactController::class);
 
 Route::get('service/index',[ServiceController::class, 'index'])->name('service.index'); 
@@ -196,8 +201,9 @@ Route::get('admin/footer', function(){
 })->name('adminfooter.index');
 
 Route::get('admin/profil', function(){
-    return view('admin/pages/profil');
-});
+    $users = User::all();
+    return view('admin/pages/profil', compact('users'));
+})->name('user.index');
 
 Route::resource('homeCarte', HomeCarteController::class);
 
@@ -271,5 +277,9 @@ Route::put('admin/footer/{footer}',[FooterController::class, "update"])->name('a
 Route::post('homes/objetcontact', [ObjetController::class, "store"])->name('contactobjet');
 Route::post('homes/newsletter', [NewsletterController::class, "store"])->name('newsletter');
 
+
+Route::get('user/edit/{user}', [UserController::class, "edit"])->name('user.edit');
+Route::put('user/update/{user}', [UserController::class, "update"])->name('user.update');
+Route::delete('user/delete/{user}', [UserController::class, "destroy"])->name('user.destroy');
 
 Auth::routes();
