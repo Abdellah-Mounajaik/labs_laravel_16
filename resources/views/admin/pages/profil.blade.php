@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 @section('content')
+@extends('layouts.flash')
+
 <div class="py-2">
     <div class="max-w-7xl mx-auto 8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -8,7 +10,6 @@
                     <h1 class="text-center text-gray-600 text-4xl m-auto">Users</h1>
                     <p class="text-center">Nombre de users: {{ count($users) }}</p>
                 </div>
-                @Webmaster
                 <table class="text-left w-full">
                     <thead>
                         <tr>
@@ -70,7 +71,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                @endWebmaster
             </div>
         </div>
     </div>

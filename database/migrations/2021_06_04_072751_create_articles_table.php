@@ -17,11 +17,11 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('image');
             $table->string('titre');
-
-
+            $table->boolean('validate');
+            $table->boolean('trash');
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories');
-
+            $table->foreignId('user_id')->constrained()->OnDelete('cascade');
             // $table->unsignedBigInteger('tag_id');
             // $table->foreign('tag_id')->references('id')->on('tags');
 

@@ -15,7 +15,7 @@
                     <div class="testimonial">
                         <span>‘​‌‘​‌</span>
                             
-                        <p>{{$item->texte}}</p>
+                        <p>{{ Str::limit($item->texte, 150, '...') }}</p>
                         <div class="client-info">
                             <div class="avatar">
                                 <img src="{{asset('img/' . $item->image)}}" alt="">

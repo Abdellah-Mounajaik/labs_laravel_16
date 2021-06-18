@@ -6,6 +6,7 @@
         <div class="row">
             <div class="col-12">
                 @foreach ($contacts as $item)
+                <h2>Position del carte maps: {{$item->position}}</h2>
                 <div class="section-title left">
                     <h2>{{$item->titre}}</h2>
                 </div>

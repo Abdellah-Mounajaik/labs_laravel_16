@@ -4,6 +4,13 @@
     <form class="container" method="POST" action="{{route('admincontact.update', $contact->id)}}">
         @csrf
         @method('PUT')
+        <label for="position">Position</label>
+        <input class="@error('position') is-invalid @enderror form-control" value="{{$contact->position}}" name="position" type="text">
+        @error('position')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         <label for="titre">Titre</label>
         <input class="@error('titre') is-invalid @enderror form-control" value="{{$contact->titre}}" name="titre" type="text">
         @error('titre')

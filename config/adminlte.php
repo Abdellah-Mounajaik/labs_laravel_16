@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'LABS',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -243,14 +243,6 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
             'text' => 'profile',
             'url'  => 'admin/profil',
             'icon' => 'fas fa-fw fa-user',
@@ -313,35 +305,25 @@ return [
             ],
         ],
         [
+            'text' => 'Blog',
+            'url'  => 'admin/blog',
+            'icon'=> 'fab fa-blogger-b',
+        ],
+
+        [
             'text' => 'Contact',
             'url'  => 'admin/contact',
+            
         ],
         [
             'text' => 'Footer',
             'url'  => 'admin/footer',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Valide',
+            'url'  => 'admin/valide',
         ],
-        
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+                
     ],
 
     /*

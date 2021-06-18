@@ -43,7 +43,7 @@
 					@foreach ($homecontent as $content)
 					
 					<div class="col-md-6">
-						<p>{{$content->texte}}</p>
+						<p>{{ Str::limit($content->texte, 250, '...') }}</p>
 					</div>
 					@endforeach
 				</div>

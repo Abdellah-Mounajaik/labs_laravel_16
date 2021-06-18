@@ -14,4 +14,10 @@ class Article extends Model
     public function tags() {
         return $this->belongsToMany(Tag::class, 'articletags', 'article_id');
     }
+    public function commentaires(){
+        return $this->hasMany(Commentaire::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

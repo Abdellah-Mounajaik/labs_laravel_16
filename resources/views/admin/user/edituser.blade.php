@@ -5,17 +5,33 @@
         @csrf
         @method('PUT')
         <label for="nom">Nom</label>
-        <input name="nom" value="{{$user->nom}}" class="form-control" type="text">
-
+        <input name="nom" value="{{$user->nom}}" class="@error('nom') is-invalid @enderror form-control" type="text">
+        @error('nom')
+        <span class="invalid-feedback">
+            <strong>{{$message}}</strong>
+        </span>
+        @enderror
         <label for="description">Description</label>
-        <input name="description" value="{{$user->description}}" class="form-control" type="text">
-
+        <input name="description" value="{{$user->description}}" class="@error('description') is-invalid @enderror form-control" type="text">
+        @error('description')
+        <span class="invalid-feedback">
+            <strong>{{$message}}</strong>
+        </span>
+        @enderror   
         <label for="email">Email</label>
-        <input name="email" value="{{$user->email}}" class="form-control" type="text"><br>
-
+        <input name="email" value="{{$user->email}}" class="@error('email') is-invalid @enderror form-control" type="text"><br>
+        @error('email')
+        <span class="invalid-feedback">
+            <strong>{{$message}}</strong>
+        </span>
+    @enderror
         <label for="image">Image</label>
-        <input name="image" id="image" type="file"> <br>
-
+        <input class="@error('image') is-invalid @enderror" name="image" id="image" type="file"> <br>
+        @error('image')
+        <span class="invalid-feedback">
+            <strong>{{$message}}</strong>
+        </span>
+    @enderror
         <label for="role">Role</label>
         <select name="role_id" class="w-full rounded-lg bg-gray-300 form-control">
             @foreach ($roles as $role)

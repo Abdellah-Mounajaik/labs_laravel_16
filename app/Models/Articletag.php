@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Articletag extends Model
 {
     use HasFactory;
-    protected $table = 'articletag';
+    protected $table = 'articletags';
 
 }

@@ -44,6 +44,13 @@ class UserController extends Controller
     }
 
     public function update(User $user, Request $request){
+
+        request()->validate([
+            "image"=> ["required"],
+            "nom"=> ["required", "min:3"],
+            "email"=> ["required", "min:3"],
+            "description"=> ["required", "min:5"],
+        ]);
         
         if($request->file('image') != NULL){
             Storage::disk('public')->delete('img/' . $user->image);
@@ -56,7 +63,7 @@ class UserController extends Controller
             $user->poste_id = $request->poste_id;
             $user->save();
         }
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', "La modification a bien été éxécuté");
     }
     public function destroy(User $user){
         $user->delete();

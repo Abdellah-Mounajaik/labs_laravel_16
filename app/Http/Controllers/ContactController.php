@@ -76,6 +76,7 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         request()->validate([
+            "position"=> ["required", "min:3"],
             "titre"=> ["required", "min:3"],
             "description"=> ["required", "min:5"],
             "soustitre"=> ["required", "min:3"],
@@ -83,6 +84,7 @@ class ContactController extends Controller
             "telephone"=> ["numeric"],
             "email"=> ["required", "min:3"],
         ]);
+        $contact->position = $request->position;
         $contact->titre = $request->titre;
         $contact->description = $request->description;
         $contact->soustitre = $request->soustitre;

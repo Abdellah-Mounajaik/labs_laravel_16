@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nom');
             $table->text('description');
             $table->string('image');
-
+            $table->boolean('validate');
             $table->unsignedBigInteger('poste_id');
             $table->foreign('poste_id')->references('id')->on('postes');
 

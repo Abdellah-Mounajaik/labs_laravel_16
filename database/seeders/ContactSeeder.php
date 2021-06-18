@@ -15,6 +15,7 @@ class ContactSeeder extends Seeder
     public function run()
     {
         DB::table('contacts')->insert([
+            "position" => "40.801485408197856, -73.96745953467104",
             "titre"=> "Contact us",
             "description"=> "Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum.",
             "soustitre"=> "Main Office",

@@ -3,6 +3,8 @@
 @section('content')
     @include('partials.headercontact')
 	<!-- Google map -->
-	<div class="map" id="map-area"></div>
+    @foreach ($contacts as $contact)
+        <div class="map" id="map-area" pos="{{$contact->position}}"> </div>        
+    @endforeach
     @include('partials.contact')
 @endsection

@@ -10,8 +10,8 @@
                     <div class="post-thumbnail">
                         <img src="{{asset('img/' . $article->image)}}" alt="">
                         <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
+                            <h2>{{$article->created_at->format('d')}}</h2>
+                            <h3>{{$article->created_at->format('M - y')}}</h3>
                         </div>
                     </div>
                     <div class="post-content">
