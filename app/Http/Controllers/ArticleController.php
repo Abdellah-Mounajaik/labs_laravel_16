@@ -123,7 +123,6 @@ class ArticleController extends Controller
         ]);
 
         if ( $request->image != null) {
-            Storage::disk('public')->delete('img/', 'public');
             $request->file('image')->storePublicly('img/', 'public');
             $article->image = $request->file('image')->hashName();
             $article->save();

@@ -71,7 +71,6 @@ class HomevideoController extends Controller
     public function update(Request $request, Homevideo $homevideo)
     {
         if ($request->file('image') != null) {
-            Storage::disk('public')->delete('img/' . $homevideo->image);
 
             $request->file('image')->storePublicly('img/','public');
             $homevideo->image =  $request->file('image')->hashName();

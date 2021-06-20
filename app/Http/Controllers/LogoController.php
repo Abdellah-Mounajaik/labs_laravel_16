@@ -70,8 +70,8 @@ class LogoController extends Controller
     public function update(Request $request, Logo $logo)
     {
         if ($request->file('logo') != null) {
-            Storage::disk('public')->delete('/' . $logo->logo);
-            $request->file('logo')->storePublicly('/','public');
+            Storage::disk('public')->delete('img/' . $logo->logo);
+            $request->file('logo')->storePublicly('img/','public');
             $logo->logo =  $request->file('logo')->hashName();
             
             $logo->save();

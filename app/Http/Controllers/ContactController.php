@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Footer;
+use App\Models\Logo;
 use App\Models\Objet;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,11 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $logos = Logo::all();
         $contacts = Contact::all();
         $footer = Footer::all();
         $objets = Objet::all();
-        return view('pages.contact', compact('objets', 'contacts', 'footer'));
+        return view('pages.contact', compact('logos', 'objets', 'contacts', 'footer'));
 
     }
 

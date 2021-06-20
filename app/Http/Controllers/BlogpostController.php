@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blogpost;
 use App\Models\Footer;
+use App\Models\Logo;
 use Illuminate\Http\Request;
 
 class BlogpostController extends Controller
@@ -15,8 +16,9 @@ class BlogpostController extends Controller
      */
     public function index()
     {
-        $footer = Footer::all();
-        return view('partials.blogpost', compact('footer'));
+        // $logos = Logo::all();
+        // $footer = Footer::all();
+        // return view('partials.blogpost', compact('logos', 'footer'));
     }
 
     /**

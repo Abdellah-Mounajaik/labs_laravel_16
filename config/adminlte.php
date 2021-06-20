@@ -243,8 +243,13 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'profile',
-            'url'  => 'admin/profil',
+            'text' => 'profil',
+            'url'  => 'admin/profill',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Role',
+            'url'  => 'admin/user',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -322,6 +327,10 @@ return [
         [
             'text' => 'Valide',
             'url'  => 'admin/valide',
+        ],
+        [
+            'text' => 'Corbeille',
+            'url'  => 'admin/corbeille',
         ],
                 
     ],

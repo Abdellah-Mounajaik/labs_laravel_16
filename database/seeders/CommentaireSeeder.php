@@ -18,7 +18,7 @@ class CommentaireSeeder extends Seeder
             [
                 "auteur" => "gokuuuu ",
                 "email" => "gokuu@gmail.be",
-                "message" => "Commentaire validé",
+                "message" => "premier commentaire",
                 "article_id" => 1,
                 "validate" => 1,
                 "created_at" => now(),
@@ -26,9 +26,9 @@ class CommentaireSeeder extends Seeder
             [
                 "auteur" => "narutoooo ",
                 "email" => "narutooo@gmail.be",
-                "message" => "Commentaire pas validé",
+                "message" => "deuxieme commentaire",
                 "article_id" => 1,
-                "validate" => 0,
+                "validate" => 1,
                 "created_at" => now(),
             ]
         ]);

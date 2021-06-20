@@ -17,7 +17,7 @@
     <div class="text-center my-4">
         <h1>Logo</h1>
         @foreach ($logos as $logo)
-            <img height="100px" class="my-5" src="{{asset('/' . $logo->logo)}}" alt=""><br>
+            <img height="100px" class="my-5" src="{{asset('img/' . $logo->logo)}}" alt=""><br>
             <button class="btn btn-success"><a class="text-white" href="{{route('logo.edit', $logo->id)}}">Moddifer</a></button> <br>
             @endforeach
     </div>

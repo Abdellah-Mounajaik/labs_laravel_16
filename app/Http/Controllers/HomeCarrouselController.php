@@ -71,7 +71,6 @@ class HomeCarrouselController extends Controller
     public function update(Request $request, HomeCarrousel $homeCarrousel)
     {
         if ($request->file('image') != null) {
-            Storage::disk('public')->delete('img/' . $homeCarrousel->image);
             $request->file('image')->storePublicly('img/','public');
             $homeCarrousel->image =  $request->file('image')->hashName();
             $homeCarrousel->phrase =  $request->phrase;

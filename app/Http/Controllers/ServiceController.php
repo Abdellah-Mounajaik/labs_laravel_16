@@ -9,12 +9,14 @@ use App\Models\Featureimage;
 use App\Models\Footer;
 use App\Models\Homeservice;
 use App\Models\Hometitreservice;
+use App\Models\Logo;
 use App\Models\Newsletter;
 use App\Models\Objet;
 use App\Models\Service;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ServiceController extends Controller
 {
@@ -25,6 +27,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        $logos = Logo::all();
         $services = Homeservice::paginate(8)->fragment('services');
         $titreservice = Hometitreservice::all();
         $contacts = Contact::all();
@@ -36,7 +39,7 @@ class ServiceController extends Controller
         $newsletter = Newsletter::all();
         $footer = Footer::all();
         $objets = Objet::all();
-        return view('pages.services', compact('objets', 'services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
+        return view('pages.services', compact('logos', 'objets', 'services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
     }
     
 

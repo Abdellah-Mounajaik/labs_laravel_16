@@ -48,18 +48,18 @@
                     <p class="text-gray-900 mt-2">{{$post->description}}</p>
                 </td>
                 <td>
-                    <p class="text-gray-900 mt-4"><b>Catégorie: </b> {{$post->categorie->nom}}</p>
+                    <p class="text-gray-900 mt-4"><b>Catégorie: </b> {{$post->categorie->categorie}}</p>
                 </td>
                 <div class="flex mt-4">
                     <form action={{route('validateUpdateArticle', $post->id)}} method="post">
                         @csrf
                         @method('PUT')
-                        <button class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
+                        <button class="bg-success  text-white font-bold py-2 px-4 rounded mr-2">Validate</i></button>
                     </form>
-                    <form method="post" action="{{route('trashArticle', $post)}}">
+                    <form class="mt-3" method="post" action="{{route('trashArticle', $post)}}">
                         @csrf
                         @method('PUT')
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                        <button class="bg-danger hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
                     </form>
                 </div>
             </div>

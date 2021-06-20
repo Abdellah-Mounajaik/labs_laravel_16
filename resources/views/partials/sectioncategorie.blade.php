@@ -1,11 +1,10 @@
-<!-- page section -->
 <div id="articlepag" class="page-section spad">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 <div class="post-item">
-                    @foreach ($articles->reverse() as $article)
+                    @forelse ($articles-> as $article)
                         
                     <div class="post-thumbnail">
                         <img src="{{asset('img/' . $article->image)}}" alt="">
@@ -29,7 +28,7 @@
                         
                         <a href="{{route('blogpost', $article->id)}}" class="read-more">Read More</a>
                     </div>
-                    @endforeach
+                    @endforelse
                     <div class="d-flex justify-content-center">
                         {{ $articles->links() }}
                     </div>
@@ -52,7 +51,7 @@
                     <h2 class="widget-title">Categories</h2>
                     <ul>
                         @foreach ($categorie as $item)
-                            <li><a href="{{route('categorie', $item->id)}}">{{$item->categorie}}</a></li>                            
+                            <li><a href="#">{{$item->categorie}}</a></li>                            
                         @endforeach
                         
                     </ul>

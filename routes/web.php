@@ -24,10 +24,12 @@ use App\Http\Controllers\HomevideoController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ObjetController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServicecardController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TitrefeaturesController;
+use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidateController;
 use App\Models\Article;
@@ -51,7 +53,9 @@ use App\Models\Homevideo;
 use App\Models\Logo;
 use App\Models\Newsletter;
 use App\Models\Objet;
+use App\Models\Poste;
 use App\Models\Promotion;
+use App\Models\Role;
 use App\Models\Servicecard;
 use App\Models\Titrefeatures;
 use App\Models\User;
@@ -119,6 +123,9 @@ Route::get('/home', function() {
 // Route::resource('service', ServiceController::class);
 Route::resource('blog', BlogController::class);
 Route::resource('Blogpost', BlogpostController::class);
+Route::get('blogshow/{id}/', [BlogController::class, 'blogpost'])->name('blogpost');
+
+Route::get('blog/categorie/{id}/', [Blogcontroller::class, "categorie"])->name('categorie');
 
 Route::resource('contact', ContactController::class);
 
@@ -221,11 +228,18 @@ Route::middleware(['auth'])->group(function(){
             return view('admin/pages/footer', compact('footer'));
         })->name('adminfooter.index');
         
-        Route::get('admin/profil', function(){
-            $users = User::all();
-            return view('admin/pages/profil', compact('users'));
-        })->name('user.index');
-         
+       
+
+        Route::get('admin/corbeille', function(){
+            $posts = Article::where('trash', 1)->get();
+            return view('admin/pages/trash', compact('posts'));
+        });
+        
+        Route::put('/admin/recup/article/{id}/', [TrashController::class, 'recupArticle'])->name('recupArticle');
+        Route::delete('/admin/trash/article/{id}/delete', [TrashController::class, 'deleteArticle'])->name('deleteArticle');
+        Route::put('/admin/trash/article/{id}/', [TrashController::class, 'trashArticle'])->name('trashArticle');
+
+
         Route::resource('homeCarte', HomeCarteController::class);
         
         // Route::resource('hometitrecontent', HometitrecontentController::class);
@@ -294,9 +308,13 @@ Route::middleware(['auth'])->group(function(){
         Route::get('admin/footer/{footer}',[FooterController::class, "edit"])->name('adminfooter.edit');
         Route::put('admin/footer/{footer}',[FooterController::class, "update"])->name('adminfooter.update');
         
+        Route::get('admin/user', function(){
+            $users = User::all();
+            $roles = Role::all();
+            return view('admin/pages/role', compact('roles', 'users'));
+        })->name('user.index');
         
-        
-        
+        Route::put('user/modifrole/{id}', [UserController::class, "modifrole"])->name('modifrole');
         
         Route::get('user/edit/{user}', [UserController::class, "edit"])->name('user.edit');
         Route::put('user/update/{user}', [UserController::class, "update"])->name('user.update');
@@ -309,10 +327,17 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/admin/validate/comment/{id}/delete', [ValidateController::class,'deleteComment'])->name('validateDeleteComment');
         Route::put('/admin/validate/update/{id}', [ValidateController::class, 'updateArticle'])->name('validateUpdateArticle');
         Route::put('/admin/validation/update/comment{id}', [CommentaireController::class, 'update'])->name('commentUpdate');
-        Route::post('/blog/article/{id}/comment', [CommentaireController::class, "store"])->name('commentStore');
+        Route::post('/blog/article/{id}/commentaire', [CommentaireController::class, "store"])->name('commentaire');
         });
     });
+    
 
+    Route::get('admin/profill', function(){
+        return view('admin/pages/profill');
+    })->name('profil.index');
+
+    Route::get('amin/profill/edit/{id}/', [ProfilController::class, "edit"])->name('profil.edit');
+    Route::put('admin/profill/update/{id}/', [ProfilController::class, "update"])->name('profil.update');
 });
 
  
