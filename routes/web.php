@@ -126,7 +126,10 @@ Route::resource('Blogpost', BlogpostController::class);
 Route::get('blogshow/{id}/', [BlogController::class, 'blogpost'])->name('blogpost');
 
 Route::get('blog/categorie/{id}/', [Blogcontroller::class, "categorie"])->name('categorie');
+Route::get('blog/tag/{id}/', [Blogcontroller::class, "tag"])->name('tag');
 
+
+Route::get('blog/recherche/', [BlogController::class, "recherche"])->name('recherche');
 Route::resource('contact', ContactController::class);
 
 Route::get('service/index',[ServiceController::class, 'index'])->name('service.index'); 
@@ -166,7 +169,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('home/carte', function(){
             $homecartes = HomeCarte::all();
             return view('admin/pages/homecarte', compact('homecartes'));
-        });
+        })->name('home.carte');
         
         
         Route::get('home/content', function(){
@@ -260,9 +263,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('home/titretesti/{hometitretesti}',[HometitretestiController::class, 'edit'])->name('titretesti.edit');
         Route::put('home/titretesti/{hometitretesti}',[HometitretestiController::class, 'update'])->name('titretesti.update');
         
+        Route::get('home/testi/create',[HometestiController::class, "create"])->name('testi.create');
+        Route::post('home/testi/store', [HometestiController::class, "store"])->name('testi.store');
         Route::get('home/testi/{hometesti}',[HometestiController::class, "edit"])->name('testi.edit');
         Route::put('home/testi/{hometesti}',[HometestiController::class, "update"])->name('testi.update');
-        
+        Route::delete('home/testi/delete/{hometesti}/',[HometestiController::class, "destroy"])->name('testi.delete');
+
         // Route::get('home/carrousel/{homeCarrousel}',[HomeCarrouselController::class, 'edit'])->name('homeCarrousel.edit');
         // Route::put('home/carrousel/{homeCarrousel}',[HomeCarrouselController::class, 'update'])->name('carrousel.update');
         
@@ -271,6 +277,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('home/logo/{logo}', [LogoController::class, "edit"])->name('logo.edit');
         Route::put('home/logo/{logo}', [LogoController::class, "update"])->name('logo.update');
         
+        Route::get('home/service/create',[HomeserviceController::class, "create"])->name('homeservice.create');
+        Route::post('home/service/store',[HomeserviceController::class, "store"])->name('homeservice.store');
+
         Route::get('home/service/{homeservice}', [HomeserviceController::class, "edit"])->name('homeservice.edit');
         Route::put('home/service/{homeservice}', [HomeserviceController::class, "update"])->name('homeservice.update');
         Route::delete('home/service/{homeservice}', [HomeserviceController::class, 'destroy'])->name('homeservice.destroy');

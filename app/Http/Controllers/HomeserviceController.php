@@ -25,7 +25,8 @@ class HomeserviceController extends Controller
      */
     public function create()
     {
-        //
+        $icone = Icone::all();
+        return view('admin.home.createhomeservice', compact('icone'));
     }
 
     /**
@@ -36,7 +37,13 @@ class HomeserviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $homeservice = new Homeservice();
+        $homeservice->icone_id = $request->icone_id;
+        $homeservice->titre = $request->titre;
+        $homeservice->description = $request->description;
+        $homeservice->save();
+
+        return redirect()->route('homeservice.index');
     }
 
     /**

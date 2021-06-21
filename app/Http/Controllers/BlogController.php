@@ -53,6 +53,39 @@ class BlogController extends Controller
         return view('pages.categorie', compact("categories", "articles", 'tags', 'logos', 'footer', 'newsletter'));
     }
 
+    public function tag(Tag $id){
+        // headerpage
+        //tags
+        $tags = Tag::all();
+        //categories
+        $categories = Categorie::all();
+
+        // $url =  url()->current();
+        // $urlCurrent = Str::afterLast($url, '/');
+
+        // $urlCurrent = Str::afterLast(($url, '/'));
+        // Str::afterLast($url, '/');
+        $ref = $id;
+
+        //logo
+        $logo = Logo::all();
+
+        $newsletter = Newsletter::all();
+
+        return view('pages.tag', compact('newsletter', 'url', 'urlCurrent', 'ref', 'categories', 'tags', 'logo') );
+
+
+    }
+
+    public function recherche(Request $request){
+        $categories = Categorie::all();
+        $tags = Tag::all();
+        $q = $request->article;
+        $articles = Article::where('titre', 'LIKE', "%{$q}%")->get();
+        $url =  url()->current();
+        return view('pages.blog', compact('categories', 'tags', 'articles', 'url'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

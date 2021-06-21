@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('Membre', function () {
             return Auth::user()->role_id == 4;
         });
+        Blade::if('membrered', function () {
+            return Auth::user()->role_id == 3 || Auth::user()->role_id == 4;
+        });
     
     }
 }

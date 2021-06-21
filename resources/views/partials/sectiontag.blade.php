@@ -4,7 +4,7 @@
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 <div class="post-item">
-                    @forelse ($articles as $article)
+                    @foreach ($ref->articles as $article)
                         
                     <div class="post-thumbnail">
                         <img src="{{asset('img/' . $article->image)}}" alt="">
@@ -28,9 +28,8 @@
                         
                         <a href="{{route('blogpost', $article->id)}}" class="read-more">Read More</a>
                     </div>
-                    @empty
-                    <p>Il n'y a pas d'articles de cette catégorie</p>
-                    @endforelse
+                   
+                    @endforeach
                     {{-- <div class="d-flex justify-content-center">
                         {{ $articles->links() }}
                     </div> --}}

@@ -25,7 +25,7 @@ class HomeCarrouselController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.home.createcarrousel');
     }
 
     /**
@@ -36,7 +36,13 @@ class HomeCarrouselController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $homeCarrousel = new HomeCarrousel();
+        $request->file('image')->storePublicly('img/', "public");
+        $homeCarrousel->image = $request->file('image')->hashName();
+        $homeCarrousel->phrase = $request->phrase;
+        $homeCarrousel->save();
+        return redirect()->route('carrousel.index')->with('success', 'une nouvelle image a été ajouté');
     }
 
     /**
@@ -88,6 +94,7 @@ class HomeCarrouselController extends Controller
      */
     public function destroy(HomeCarrousel $homeCarrousel)
     {
-        //
+        $homeCarrousel->delete();
+        return redirect()->back();
     }
 }

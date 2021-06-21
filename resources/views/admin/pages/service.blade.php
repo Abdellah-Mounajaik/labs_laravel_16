@@ -9,9 +9,11 @@
     @endforeach
 </div>
     
+<button class="btn btn-primary my-3"><a class="text-white" href="{{route('homeservice.create')}}">Ajouter</a></button>
     <div class="row">
         <!-- single service -->
         @foreach ($homeservices as $item)
+
         <div class="col-md-4 text-center col-sm-6">
             <div class="service my-2">
                 <div class="icon">

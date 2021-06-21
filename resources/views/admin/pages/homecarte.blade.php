@@ -4,10 +4,10 @@
 <!-- About section -->
 <h1 class="text-center my-3">Carte : </h1>
 <div class="about-section">
-		<div class="overlay"></div>
 		<!-- card section -->
 		<div class="text-center card-section">
 			<div class="container">
+				<button class="btn btn-primary"><a class="text-white" href="{{route('homeCarte.create')}}">Ajouter</a></button>
 				<div class="row">
 					<!-- single card -->
 					@foreach ($homecartes as $carte)

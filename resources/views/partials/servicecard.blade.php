@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <!-- Single Card -->
-            @foreach ($servicecard as $item)
+            @foreach ($articles->take(3) as $item)
                 
             <div class="col-md-4 col-sm-6">
                 <div class="sv-card">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-text">
                         <h2>{{$item->titre}}</h2>
-                        <p>{{$item->description}}</p>
+                        <p>{{ Str::limit($item->description, 200, '...') }}</p>
                     </div>
                 </div>
             </div>

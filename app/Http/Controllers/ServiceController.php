@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Feature;
 use App\Models\Featurebis;
@@ -39,7 +40,8 @@ class ServiceController extends Controller
         $newsletter = Newsletter::all();
         $footer = Footer::all();
         $objets = Objet::all();
-        return view('pages.services', compact('logos', 'objets', 'services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
+        $articles = Article::all()->reverse();
+        return view('pages.services', compact('articles', 'logos', 'objets', 'services', 'titreservice', 'contacts', 'titrefea', 'features', 'featuresimage', 'featurebis', 'servicecard', 'newsletter', 'footer'));
     }
     
 

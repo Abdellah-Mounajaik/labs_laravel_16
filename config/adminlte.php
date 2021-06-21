@@ -250,12 +250,14 @@ return [
         [
             'text' => 'Role',
             'url'  => 'admin/user',
+            'can' => "adWebMaster",
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'home',
             'icon'    => 'far fa-file-alt',
             'url'  => '/admin/home',
+            'can' => "adWebMaster",
             'submenu' => [
                 [
                     'text' => 'Carrousel',
@@ -294,6 +296,7 @@ return [
         [
             'text'=> 'Service',
             'icon'=> 'fas fa-cogs',
+            'can' => "adWebMaster",
             'submenu'=> [
                 [
                     'text'=> 'service',
@@ -302,10 +305,6 @@ return [
                 [
                     'text'=> 'tel',
                     'url'=> 'service/tel',
-                ],
-                [
-                    'text'=> 'cartes',
-                    'url'=> 'service/carte',
                 ],
             ],
         ],
@@ -318,19 +317,22 @@ return [
         [
             'text' => 'Contact',
             'url'  => 'admin/contact',
-            
+            'can' => "adWebMaster",
         ],
         [
             'text' => 'Footer',
             'url'  => 'admin/footer',
+            'can' => "adWebMaster",
         ],
         [
             'text' => 'Valide',
             'url'  => 'admin/valide',
+            'can' => "adWebMaster",
         ],
         [
             'text' => 'Corbeille',
             'url'  => 'admin/corbeille',
+            'can' => "adWebMaster",
         ],
                 
     ],

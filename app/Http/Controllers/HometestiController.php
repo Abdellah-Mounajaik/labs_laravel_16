@@ -25,7 +25,7 @@ class HometestiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.home.createhometesti');
     }
 
     /**
@@ -36,7 +36,14 @@ class HometestiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hometesti = new Hometesti();
+        $request->file('image')->storePublicly('img/','public');
+        $hometesti->image =  $request->file('image')->hashName();
+        $hometesti->nom =  $request->nom;
+        $hometesti->fonction =  $request->fonction;
+        $hometesti->texte =  $request->texte;
+        $hometesti->save();
+        return redirect()->route('testimonial.index');
     }
 
     /**
@@ -76,7 +83,6 @@ class HometestiController extends Controller
             "texte"=> ["required", "min:5"],
         ]);
         if ($request->file('image') != null) {
-            Storage::disk('public')->delete('img/' . $hometesti->image);
 
             $request->file('image')->storePublicly('img/','public');
             $hometesti->image =  $request->file('image')->hashName();
@@ -96,6 +102,7 @@ class HometestiController extends Controller
      */
     public function destroy(Hometesti $hometesti)
     {
-        //
+        $hometesti->delete();
+        return redirect()->back();
     }
 }

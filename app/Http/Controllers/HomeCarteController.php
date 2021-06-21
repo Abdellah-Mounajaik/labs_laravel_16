@@ -26,7 +26,8 @@ class HomeCarteController extends Controller
      */
     public function create()
     {
-        //
+        $icone = Icone::all();
+        return view('admin.home.createhomecarte', compact('icone'));
     }
 
     /**
@@ -37,7 +38,12 @@ class HomeCarteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $homeCarte = new HomeCarte();
+        $homeCarte->icone_id = $request->icone_id;
+        $homeCarte->titre = $request->titre;
+        $homeCarte->description = $request->description;
+        $homeCarte->save();
+        return redirect()->route('home.carte');
     }
 
     /**
@@ -80,7 +86,7 @@ class HomeCarteController extends Controller
         $homeCarte->titre = $request->titre;
         $homeCarte->description = $request->description;
         $homeCarte->save();
-        return redirect()->route('homeCarte.index', compact('homeCarte'))->with('success', "La modification a bien été éxécuté");
+        return redirect()->route('home.carte', compact('homeCarte'))->with('success', "La modification a bien été éxécuté");
     }
 
     /**
