@@ -3,7 +3,7 @@
 @extends('layouts.flash')
 
 <div class="text-center intro-video">
-    <h1>Vidéo : </h1>
+    <h1 style="color: #2be6ab">Vidéo : </h1>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             @foreach ($homevideo as $item)

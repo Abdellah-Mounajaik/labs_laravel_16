@@ -5,7 +5,7 @@
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 <div class="post-item">
-                    @foreach ($articles->reverse() as $article)
+                    @forelse ($articles->reverse() as $article)
                         
                     <div class="post-thumbnail">
                         <img src="{{asset('img/' . $article->image)}}" alt="">
@@ -29,10 +29,10 @@
                         
                         <a href="{{route('blogpost', $article->id)}}" class="read-more">Read More</a>
                     </div>
-                    @endforeach
-                    <div class="d-flex justify-content-center">
-                        {{ $articles->links() }}
-                    </div>
+                    @empty
+                        <h3>il n'y a pas pas d'article à ce sujet.</h3>
+                    @endforelse
+                  
                 </div>
                 
         
@@ -63,7 +63,7 @@
                     <h2 class="widget-title">Tags</h2>
                     @foreach ($tag as $item)
                     <ul class="tag">
-                        <li><a href="{{route('tag', $item->id)}}">{{$item->tag}}</a></li>
+                        <li><a href="">{{$item->tag}}</a></li>
                     </ul>
                     @endforeach
                 </div>

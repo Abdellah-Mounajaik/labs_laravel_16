@@ -2,7 +2,7 @@
 @section('content')
 @extends('layouts.flash')
 <!-- About section -->
-<h1 class="text-center my-3">Carte : </h1>
+<h1 style="color: #2be6ab" class="text-center my-3">Carte : </h1>
 <div class="about-section">
 		<!-- card section -->
 		<div class="text-center card-section">

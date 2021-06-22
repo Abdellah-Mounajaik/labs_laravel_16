@@ -24,7 +24,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tagcat.createcategorie');
     }
 
     /**
@@ -35,7 +35,13 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "categorie"=> ["required", "min:1"],
+        ]);
+        $categorie = new Categorie();
+        $categorie->categorie = $request->categorie;
+        $categorie->save();
+        return redirect()->route('tagcat.index');
     }
 
     /**
@@ -80,6 +86,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return redirect()->back()->with('Votre categorie a été supprimer');
     }
 }

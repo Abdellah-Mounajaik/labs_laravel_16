@@ -8,7 +8,7 @@
     
                 <!-- Articles à valider -->
                 <div class="mb-4">
-                    <h1 class="text-gray-600 text-center"><b>Articles supprimés</b></h1>
+                    <h1 style="color: #2be6ab" class="text-gray-600 text-center"><b>Articles supprimés</b></h1>
                     <div>
                         @forelse ($posts as $article)
                         <div class="mt-4 w-3/5 border border-purple-700 rounded py-4 px-4">
@@ -41,7 +41,7 @@
                         @empty 
                         <tr>
                             <td class="text-sm font-medium" colspan="5" >
-                                <p class="text-center font-bold mx-auto my-3">Corbeille vide</p> 
+                                <p style="color: #6a23b5" class="text-center font-bold mx-auto my-3">Corbeille vide</p> 
                             </td>
                         </tr>
                         @endforelse

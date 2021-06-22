@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             FeatureimageSeeder::class,
             FeaturebisSeeder::class,
             ServicecardSeeder::class,
-            NewsletterSeeder::class,
+            // NewsletterSeeder::class,
             CategorieSeeder::class,
             ArticleSeeder::class,
             TagSeeder::class,

@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => 'LABS',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/favicon.ico',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -262,34 +262,42 @@ return [
                 [
                     'text' => 'Carrousel',
                     'url'  => 'home/carrousel',
+                    'icon' => "fas fa-images",
                 ],
                 [
                     'text' => 'Carte',
                     'url'  => 'home/carte',
+                    'icon' => "fas fa-id-card-alt",
                 ],
                 [
                     'text' => 'Content',
                     'url'  => 'home/content',
+                    'icon' => "fas fa-align-left",
                 ],
                 [
                     'text' => 'video',
                     'url'  => 'home/video',
+                    'icon' => "fas fa-video",
                 ],
                 [
                     'text' => 'testimonial',
                     'url'  => 'home/testimonial',
+                    'icon' => "fas fa-user-friends",
                 ],
                 [
                     'text' => 'service',
                     'url'  => 'service',
+                    'icon'=> 'fas fa-cogs',
                 ],
                 [
                     'text' => 'equipe',
                     'url'  => 'home/equipe',
+                    'icon' => "fas fa-users",
                 ],
                 [
                     'text' => 'ready',
                     'url'  => 'home/ready',
+                    'icon' => "fab fa-readme",
                 ],
             ]
         ],
@@ -301,10 +309,12 @@ return [
                 [
                     'text'=> 'service',
                     'url'=> 'service',
+                    'icon'=> 'fas fa-cogs',
                 ],
                 [
                     'text'=> 'tel',
                     'url'=> 'service/tel',
+                    'icon' => "fas fa-mobile-alt",
                 ],
             ],
         ],
@@ -312,27 +322,44 @@ return [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'icon'=> 'fab fa-blogger-b',
+            'can' => "red",
         ],
 
         [
             'text' => 'Contact',
             'url'  => 'admin/contact',
+            'icon' => "far fa-address-book",
             'can' => "adWebMaster",
         ],
         [
             'text' => 'Footer',
             'url'  => 'admin/footer',
             'can' => "adWebMaster",
+            'icon' => "fas fa-file-alt",
+        ],
+        [
+            'text' => 'Newsletter',
+            'url'  => 'admin/newsletter',
+            'can' => "adWebMaster",
+            'icon' => "fas fa-at",
+        ],
+        [
+            'text' => 'Tag & Categorie',
+            'url'  => 'admin/tagcat',
+            'can' => "adWebMaster",
+            'icon' => "fas fa-hashtag",
         ],
         [
             'text' => 'Valide',
             'url'  => 'admin/valide',
             'can' => "adWebMaster",
+            'icon' => "fas fa-check-circle",
         ],
         [
             'text' => 'Corbeille',
             'url'  => 'admin/corbeille',
             'can' => "adWebMaster",
+            'icon' => "fas fa-trash-alt",
         ],
                 
     ],

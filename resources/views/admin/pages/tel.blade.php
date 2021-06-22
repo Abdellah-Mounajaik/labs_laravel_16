@@ -5,7 +5,7 @@
 <!-- features section -->
 <div class="text-center">
     @foreach ($titrefea as $item)
-    <h1>titre :</h1>
+    <h1 style="color: #2be6ab">titre :</h1>
     <h2 class="mb-5">{{$item->titre}}</h2>
     <button class="btn btn-success"><a class="text-white" href="{{route('titrefeature.edit', $item->id)}}">Modifier</a></button>
 

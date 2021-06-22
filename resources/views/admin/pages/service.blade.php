@@ -2,7 +2,7 @@
 @section('content')
 @extends('layouts.flash')
 <div class="text-center my-4">
-    <h1 class="text-center">Titre service : </h1>
+    <h1 style="color: #2be6ab" class="text-center">Titre service : </h1>
     @foreach ($hometitreservice as $item)
         <h2 class="text-center">{{$item->titre}}</h2>
         <button class="btn btn-success"><a class="text-white" href="{{route('titreservice.edit', $item->id)}}">Modifier</a></button>

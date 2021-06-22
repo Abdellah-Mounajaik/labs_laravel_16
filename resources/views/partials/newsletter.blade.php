@@ -3,9 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                @foreach ($newsletter as $item)
-                    <h2>{{$item->titre}}</h2>                    
-                @endforeach
+                <h2>Newsletter</h2>                    
             </div>
             <div class="col-md-9">
                 <!-- newsletter form -->

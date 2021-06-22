@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('content')
 @extends('layouts.flash')
-    <h1 class="text-center my-5">Contact</h1>
+    <h1 style="color: #2be6ab" class="text-center my-5">Contact</h1>
     <div class="container">
         <div class="row">
             <div class="col-12">

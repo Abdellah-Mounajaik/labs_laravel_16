@@ -2,11 +2,11 @@
 @section('content')
     @include('layouts.flash')
 
-<h1 class="text-center">Profil</h1>
+<h1 style="color: #2be6ab" class="text-center">Profil</h1>
 <div class="d-flex justify-content-center text-center">
-    <div class=" card" style="width: 18rem;">
-        <img height="350px" src="{{asset(Auth::user()->image) }}" class="card-img-top" alt="...">
-        <div class="card-body">
+    <div style="border: 1px solid #6a23b5" class=" card" style="width: 18rem;">
+            <img height="350px" src="{{asset(Auth::user()->image)}}" class="card-img-top" alt="...">
+        <div class="card-body"> 
             <h5 class="card-title">Nom : {{ Auth::user()->nom }}</h5>
             <h5>Role : {{ Auth::user()->role->role }}</h5>
             <h5>Fonction : {{ Auth::user()->poste->poste }}</h5>

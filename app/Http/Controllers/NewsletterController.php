@@ -37,6 +37,12 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "mail"=>"required|email|unique:newsletters,mail"
+        ]);
+        $newsletter = new Newsletter();
+        $newsletter->mail = $request->mail;
+        $newsletter->save();
         Mail::to("mounajaikabdellah@gmail.com")->send(new NewsletterSender($request));
         return redirect()->back();
     }

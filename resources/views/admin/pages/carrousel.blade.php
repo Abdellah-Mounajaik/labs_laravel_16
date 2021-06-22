@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('content')
 @extends('layouts.flash')
-    <h1 class="text-center my-4">Carrousel</h1>
+    <h1 style="color: #2be6ab" class="text-center my-4">Carrousel</h1>
 
     <div class="container">
         <button class="btn btn-primary my-3"><a class="text-white" href="{{route('homeCarrousel.create')}}">Ajouter</a></button>
@@ -21,7 +21,7 @@
             </div>
     </div>
     <div class="text-center my-4">
-        <h1>Logo</h1>
+        <h1 style="color: #2be6ab">Logo</h1>
         @foreach ($logos as $logo)
             <img height="100px" class="my-5" src="{{asset('img/' . $logo->logo)}}" alt=""><br>
             <button class="btn btn-success"><a class="text-white" href="{{route('logo.edit', $logo->id)}}">Moddifer</a></button> <br>

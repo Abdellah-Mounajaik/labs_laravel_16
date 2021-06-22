@@ -21,11 +21,13 @@ class BlogController extends Controller
      */
     public function index()
     {
+    
+           
+        $articles = Article::where('validate', 1)->where('trash', 0)->paginate(3)->fragment('articlepag');        
         $logos = Logo::all();
         $categorie = Categorie::all();
         $tag = Tag::all();
         $newsletter = Newsletter::all();
-        $articles = Article::where('validate', 1)->where('trash', 0)->paginate(3)->fragment('articlepag');
         $footer = Footer::all();
         $commentaires = Commentaire::all();
         return view('pages.blog', compact('commentaires', 'logos', 'newsletter', 'categorie', 'tag', 'articles', 'footer'));
@@ -54,36 +56,40 @@ class BlogController extends Controller
     }
 
     public function tag(Tag $id){
-        // headerpage
-        //tags
-        $tags = Tag::all();
-        //categories
+
         $categories = Categorie::all();
 
-        // $url =  url()->current();
-        // $urlCurrent = Str::afterLast($url, '/');
+        $article = $id;
+        $tags = Tag::all(); 
+        $commentaire = Commentaire::all()->where('valide',1); 
 
-        // $urlCurrent = Str::afterLast(($url, '/'));
-        // Str::afterLast($url, '/');
-        $ref = $id;
+        $logos = Logo::all();
+        $articles = Article::where('validate', 1)->where('trash', 0);
 
-        //logo
-        $logo = Logo::all();
 
         $newsletter = Newsletter::all();
+        $footer = Footer::all();
 
-        return view('pages.tag', compact('newsletter', 'url', 'urlCurrent', 'ref', 'categories', 'tags', 'logo') );
+        return view('pages.tag', compact('newsletter','blog',  "tags", 'categories', 'logos', 'article', 'commentaire', 'footer' ));
 
 
     }
 
-    public function recherche(Request $request){
-        $categories = Categorie::all();
-        $tags = Tag::all();
-        $q = $request->article;
-        $articles = Article::where('titre', 'LIKE', "%{$q}%")->get();
-        $url =  url()->current();
-        return view('pages.blog', compact('categories', 'tags', 'articles', 'url'));
+    public function search(Request $request){
+        $categorie = Categorie::all();
+        $tag = Tag::all();
+        // $q = $request->input();
+        // $articles = Article::where('titre', 'LIKE', "%$q%")->get();
+        $logos = Logo::all();
+        $footer = Footer::all();
+        $search = $request->search;
+        $articles = Article::where('titre', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%")
+                    ->get();
+
+
+        return view('pages.blogrecherche', compact('categorie', 'tag', 'articles', 'logos', "footer"));
+        // return redirect()->route('blog.index', compact('categories', 'tags', 'articles'));
     }
 
     /**

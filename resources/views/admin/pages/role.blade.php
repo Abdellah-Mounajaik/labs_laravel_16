@@ -3,10 +3,10 @@
 @include('layouts.flash')
 <div class="container mt-2">
     <div class="container mt-2" id="">
-        <h2 class="text-center my-5">Modifier les roles</h2>
+        <h2 style="color: #2be6ab" class="text-center my-5">Modifier les roles</h2>
         <div class="">
             <table class=" table">
-                <thead class="">
+                <thead style="color: #6a23b5" class="">
                     <tr>
                         <th scope="col"
                             class="px-6 py-3">

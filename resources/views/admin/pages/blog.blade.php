@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('content')
 @extends('layouts.flash')
-    <h1 class="text-center">Blog</h1>
+    <h1 style="color: #2be6ab" class="text-center">Blog</h1>
     <div class="py-5 px-5">
         <div class=" px-5">
             <div class="px-5">
@@ -11,7 +11,7 @@
                     </ul>
 
                     <table class="">
-                        <tr class="border-2">
+                        <tr style="color: #6a23b5" class="border-2">
                             <th class="py-4 px-5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">#</th>
                             <th class="py-4 px-5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Image</th>
                             <th class="py-4 px-5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Titre</th>

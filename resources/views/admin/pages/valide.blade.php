@@ -2,7 +2,8 @@
 @section('content')
 @extends('layouts.flash')
 <div class="mb-4">
-    <h4 class="text-gray-600"><b>Membres à valider</b></h4>
+    <h1 style="color: #2be6ab" class="text-center">Valider</h1>
+    <h4 style="color: #6a23b5" class="text-gray-600"><b>Membres à valider</b></h4>
     <div class="mx-auto">
         @forelse ($users as $user)
         <div class="mt-4 w-1/3 border border-green-700 rounded py-4 px-4">
@@ -32,7 +33,7 @@
         @endforelse 
     </div>
     <div class="mb-4">
-        <h4 class="text-gray-600"><b>Posts à valider</b></h4>
+        <h4 style="color: #6a23b5" class="text-gray-600"><b>Posts à valider</b></h4>
         <div>
             @forelse ($posts as $post)
             <div class="mt-4 w-3/5 border border-purple-700 rounded py-4 px-4">
@@ -73,7 +74,7 @@
         </div>
     </div>
     <div class="mb-4">
-        <h4 class="text-gray-600"><b>Commentaires à valider</b></h4>
+        <h4 style="color: #6a23b5" class="text-gray-600"><b>Commentaires à valider</b></h4>
         <div>
             @forelse ($commentaires as $commentaire)
             <div class="mt-4 w-1/3 border border-green-700 rounded py-4 px-4">

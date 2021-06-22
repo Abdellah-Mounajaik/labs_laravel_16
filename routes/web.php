@@ -4,6 +4,7 @@ use App\Http\Controllers\AllController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogpostController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeaturebisController;
@@ -28,12 +29,14 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServicecardController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TitrefeaturesController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidateController;
 use App\Models\Article;
 use App\Models\Blog;
+use App\Models\Categorie;
 use App\Models\Contact;
 use App\Models\Feature;
 use App\Models\Featurebis;
@@ -57,6 +60,7 @@ use App\Models\Poste;
 use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\Servicecard;
+use App\Models\Tag;
 use App\Models\Titrefeatures;
 use App\Models\User;
 use Database\Seeders\HometitretestiSeeder;
@@ -126,10 +130,10 @@ Route::resource('Blogpost', BlogpostController::class);
 Route::get('blogshow/{id}/', [BlogController::class, 'blogpost'])->name('blogpost');
 
 Route::get('blog/categorie/{id}/', [Blogcontroller::class, "categorie"])->name('categorie');
-Route::get('blog/tag/{id}/', [Blogcontroller::class, "tag"])->name('tag');
+Route::get('blog/tag/{id}', [Blogcontroller::class, "tag"])->name('tag');
 
 
-Route::get('blog/recherche/', [BlogController::class, "recherche"])->name('recherche');
+Route::get('search', [BlogController::class, "search"])->name('search');
 Route::resource('contact', ContactController::class);
 
 Route::get('service/index',[ServiceController::class, 'index'])->name('service.index'); 
@@ -140,6 +144,8 @@ Route::get('/admin/home', [HomeController::class, 'index']);
 
 Route::post('homes/objetcontact', [ObjetController::class, "store"])->name('contactobjet');
 Route::post('homes/newsletter', [NewsletterController::class, "store"])->name('newsletter');
+Route::post('/blog/article/{id}/commentaire', [CommentaireController::class, "store"])->name('commentaire');
+
 
 // BACKEND
 
@@ -216,10 +222,10 @@ Route::middleware(['auth'])->group(function(){
         })->name('tel.index');
         
         
-        Route::get('service/carte', function(){
-            $servicecard = Servicecard::all();
-            return view("admin/pages/servicecarte", compact('servicecard'));
-        })->name('servicecard.index');
+        // Route::get('service/carte', function(){
+        //     $servicecard = Servicecard::all();
+        //     return view("admin/pages/servicecarte", compact('servicecard'));
+        // })->name('servicecard.index');
         
         Route::get('admin/contact', function(){
             $contacts = Contact::all();
@@ -231,7 +237,27 @@ Route::middleware(['auth'])->group(function(){
             return view('admin/pages/footer', compact('footer'));
         })->name('adminfooter.index');
         
-       
+       Route::get('admin/newsletter', function(){
+           $newsletter = Newsletter::all();
+           return view('admin/pages/news', compact('newsletter'));
+       });
+       Route::get('admin/tagcat', function(){
+            $tags = Tag::all();
+            $categories = Categorie::all(); 
+           return view('admin/pages/tagcat', compact('tags', 'categories'));
+       })->name('tagcat.index');
+      
+       Route::get('admin/tag/create', [TagController::class, "create"])->name('tag.create');
+       Route::post('admin/tag/store', [TagController::class, "store"])->name('tag.store');
+
+       Route::get('admin/categorie/create', [CategorieController::class, "create"])->name('categorie.create');
+       Route::post('admin/categorie/store', [CategorieController::class, "store"])->name('categorie.store');
+
+
+       Route::delete('admin.pages/tag/delete/{tag}',[TagController::class, "destroy"])->name('tag.destroy');
+       Route::delete('admin.pages/categorie/delete/{categorie}',[CategorieController::class, "destroy"])->name('categorie.destroy');
+
+
 
         Route::get('admin/corbeille', function(){
             $posts = Article::where('trash', 1)->get();
@@ -336,7 +362,6 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/admin/validate/comment/{id}/delete', [ValidateController::class,'deleteComment'])->name('validateDeleteComment');
         Route::put('/admin/validate/update/{id}', [ValidateController::class, 'updateArticle'])->name('validateUpdateArticle');
         Route::put('/admin/validation/update/comment{id}', [CommentaireController::class, 'update'])->name('commentUpdate');
-        Route::post('/blog/article/{id}/commentaire', [CommentaireController::class, "store"])->name('commentaire');
         });
     });
     

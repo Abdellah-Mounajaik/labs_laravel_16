@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tagcat.createtag');
     }
 
     /**
@@ -35,7 +35,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "tag"=> ["required", "min:1"],
+        ]);
+        $tag = new Tag();
+        $tag->tag = $request->tag;
+        $tag->save();
+        return redirect()->route('tagcat.index');
     }
 
     /**
@@ -80,6 +86,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->back()->with('Votre Tag a été supprimer');
     }
 }

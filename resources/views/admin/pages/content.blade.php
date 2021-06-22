@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('content')
 @extends('layouts.flash')
-<h1 class="text-center my-4">Titre about :</h1>
+<h1 style="color: #2be6ab" class="text-center my-4">Titre about :</h1>
 @foreach ($hometitrecontent as $item)
 			<h2 class="text-center">
 				@php
@@ -15,7 +15,7 @@
             </div>
 
 	@endforeach
-            <h1 class="my-5 text-center">Texte content :</h1>
+            <h1 style="color: #2be6ab" class="my-5 text-center">Texte content :</h1>
             <div class="container">
 
                 <div class="row">

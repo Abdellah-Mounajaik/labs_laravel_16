@@ -3,7 +3,7 @@
 @extends('layouts.flash')
 
 <div class="text-center">
-    <h1>Titre equipe :</h1>
+    <h1 style="color: #2be6ab">Titre equipe :</h1>
     @foreach ($titreequipe as $item)
         <h2>{{$item->titre}}</h2>
         <button class="btn btn-success"><a class="text-white" href="{{route('titreequipe.edit', $item->id)}}">Modifier</a></button>

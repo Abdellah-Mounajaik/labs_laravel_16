@@ -4,7 +4,7 @@
             <div class="col-md-8 col-sm-7 blog-posts">
                 <!-- Post item -->
                 <div class="post-item">
-                    @foreach ($ref->articles as $article)
+                    @foreach ($blog as $article)
                         
                     <div class="post-thumbnail">
                         <img src="{{asset('img/' . $article->image)}}" alt="">

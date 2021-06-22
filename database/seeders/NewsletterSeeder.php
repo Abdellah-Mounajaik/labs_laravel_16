@@ -14,8 +14,8 @@ class NewsletterSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('newsletters')->insert([
-            "titre" => "Newsletter",
-        ]);
+        // DB::table('newsletters')->insert([
+        //     "titre" => "Newsletter",
+        // ]);
     }
 }
